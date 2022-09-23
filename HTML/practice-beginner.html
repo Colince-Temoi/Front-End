@@ -1,0 +1,314 @@
+<!-- Building Websites
+=>You require 3 technoloigies:
+  1.HTML which is responsible for the structure of your website
+  2.CSS which is responsible for the presentation of your website
+  3.JS for handling interactivity.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 
+      HEAD HTML ELEMENT
+      =====================
+      Part of the html document,that is not displayed on the web browser when the page is loaded.Contains the title and meta data about the html document.
+  
+  Meta tag--tag used to describe meta data.
+  There are quite some few types meta elements that you can add.Some of the most important ones include:
+  1.One that specifys the documents character encoding.UTF-8  is a universal character set, that includes pretty much any character from any human language.This means your webpage will be able to handle displaying any language and therefore it is a good idea to set this on every webpage you create.
+  2.One that sets the author of the page.
+  3.One for page description--Important for SEO purposes
+  4.One for setting the viewport.This ensures your webpage width adapts to the device viewport and sets the initial scale.
+
+  If you know this meta tags then you are set with the HTML head section of an html document.
+
+  Apart from this, we have style and script tags which we can  include in the head section.Style tag moresore than the script tag.
+     -->
+    <meta charset="UTF-8" />
+    <meta name="author" content="TMI">
+    <meta name="description" content="This web page aims to provide complete beginners information about HTML fundamentals">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="practicestyling.css">
+  </head>
+  <body>
+    <!--TEXT FORMATING
+      ----------------------
+      1. Heading elements,h1 to h6 
+         Its a good practice to have only one h1 tag per page
+        h2 to h6 can be used as sub-heading tags
+      2.paragrapgh
+         A paragrapgh text always starts on a new line and
+        Unlike headings it is always a block of text
+         Text you see on blog post, product descriptions, e-cormerse sites,...etc
+        To intentionally add line breaks use the br tag to do so.
+      3.Horizontal rule --can as well be used for separating content on a webpage just like spacing does.Generally spacing is sufficient to separate content but it is worth knowing the hr as well.
+
+    INLINE FORMATING OF TEXT
+    ------------------------
+   1. strong tag --add importance to text.text will appear bold.Can be substituded with b tag for bold.though they do not carry any semantic meaning and not good for search engine From a screen reader point of view which reads out the text for people with visual impairement.
+
+   3.emphasis tag --stress on certain text/words.Is italisised.can be substituted with i tag for itilising.though they do not carry any semsntic meaning and not good for search engine From a screen reader point of view which reads out the text for people with visual impairement.
+
+   4.small tag --define a smaller text.If you have fine print in your text ypu can use this tag.
+
+   5.mark tag--used to highlight text.
+
+   6.del tag--strike through text.Can be used to show intentional correction.
+
+   7.ins tag --underline text.
+
+   8.sub tag --for subscripts.
+   9.sup tag --for superscripts.
+   10. ...etc.
+
+      Like this HTML provides good support for text formatting.
+
+DEFAULT DISPLAY VALUES FOR HTML ELEMENTS
+------------------------------------------
+Elements can either be:
+1.Block level --Elements always start on a new line and take up the full width available.EX'S: div,p,..etc
+
+2.Inline--Does not start on a new line and take up as much width as necessary.In this case the width of the text/content.
+EX'S: span,...etc
+
+When writting HTML alone,div and span tags are of less significance.Useful whenever we want to add styles to a group of elemnts or only a portion of the elements.
+
+div and span tags you will see alot in web development.
+
+ELEMENTS CONCERNED WITH RENDERING A LIST IN THE BROWSER.
+---------------------------------------------------------
+List are very important in our day to day life.EX'S: list of; items,things to do on a vacation,...etc
+
+3 types of list:
+ +. ul  --mark up list of items where the order does not matter.EX: shoping list.List items marked by bullets by default.
+
+ +.ol --order does matter.For example if you are giving a set of directions to your friend.List items will be marked by numbersby default.
+
+ +.Description list--List of terms and there description. Takes usage of 3 tags.
+     dl --definition list.
+     dt--adding terms.
+     dd--adding description to the term.
+
+HTML ATTRIBUTES
+------------------------
+Provide additional inf about html elements.All html elements can have attributes.We are however going to look at two elements where the attributes sort of define the element itself.
+
+1.img element--embed the image in the webpage.is a selfclosing tag. Has: src,width,height,alt attributes.
+
+alt--This attribute is picked up by screen readers and is used to describe the image to visually impaired people.
+
+2.a tag-- create hyperlinks to other pages, either on the internet or on our own folder/website.Has: href,target,...etc attributes.
+if target attribute is set to "_blank" --Open's the link on a new tab.Useful when you are directing users away from your webpage.
+
+both, img and a tag are useful when building webpages/websites.
+
+HTML TABLES
+------------------
+When building webpages you are going to come across the need of displaying rows of data.This can be a table of: user inf, shipping charges by location,product data.
+Like this arranging data in rows and columns is common.
+
+HTML FORMS
+-----------
+So far you've been displaying data to the user, now it's time to collect data from the user, using html forms.When building webpages, you will come across the need to collect user data, i.e for registration or even personal details for applying a bank a/c or something else.
+HTML forms Allows users to enter data which are generally send to the webserver for processing or for storage.tags include:
++.form
++.label
++.input--single line input.
+   A good practice with form controls in HTML is tying the input elemnt with its label.For that we add an id attribubte to the input element and use it's value on the for attribute for the label.What this does is that when we click on the label it focuses on the input elemnt.
++.textarea--Collect a larger text from the user.Multiline input.
++.Dropdown control--uses: select and option tags
+   For each option we specify the text to be displayed and the value of that option, that is going to be send to the server
++.radio button group--Allows auser selsct one option form many other options.Say, job type: part time or full time.input tag is used with the type as radio.Few more attributes are used: name, value,...etc
+for radio button to remain/belong to the same group, the name need remain the same.
++.Checkbox--Allows a user select multiple options from many other otions.Input tag is used with the type as checkbox.Few more attributes are used: name, value,...etc
+For checkbox to belong to the same group, the name remain the same.
+
+NOTE:id needs to be unique for a page.
+
+Like this we've seen multiple ways to collect input from the user.What you may need is a button at the end of this form to send the data to the server.Like this within the form tag at the end,add a button element.
+
+SEMANTIC HTML
+===========================
+Given more care as you become familiar with HTML.When grouping elemnts or content in webpage, it is possible to use div and span tags.If you were to open a pretty old website you will see hundreds of div and span tags.However, this tags tell nothing about their content.Semantic HTML aims to fix this problem.A semantic element clearly describe their meaning in a human and machine-readable way.In HTML 5 their are rouhgly 100 semantic elements.Leh me just highlight some of the frequently used semantic elements: For page layout: <header>, <nav>,<section>,<article>,<aside>,<footer>
+
+  header--header tag used
+
+  navaigation bar, where you typically see links to:home, about,services,...etc--nav tag is used.
+
+  section tag--Defines a section of the page.For example: an intro, some contact info,...etc
+
+  article tag--can be used for blog posts,product cards,user comments,..etc
+
+  aside tag--Define some content aside from the main content.EX: A side bar where you can highlight recent or featured blog posts
+
+  footer--For links on you web page.EX:privacy policy,copyright info,site map,...etc
+
+  ADVANTAGES OF SEMANTIC HTML
+  ===========================
+  Suggests to the developer the type of data that will be populated.
+  Semantic HTML helps search engines to inluence the page search rankings.
+  Screen readers can use this as a signpost to help visually impaired users navigate the page.
+  It is also important from the interview point of view.
+
+For webpage correcteness that follows Semantic HTML, We need to use below semantics:
+  >>Hierarchy of headers with only one h1 per page.From there,your can have multiple h2 headers which define subtopics.Then h3 headers if there was a subtopic of a sub-topic,...etc.Although,you don't necessarilly need any more than three levels of headings in a page.
+      +.Hierarchy of headers is one very important thing to really understand even if you don't get the Other semantic HTML elements correctly.Avoiding this is one of the very big mistakes you can make.
+
+  >>nav --Navigation area.There can be more than one navigation area per page.We may have a nav area in the footer because Footers often have links to other areas.
+   +.If you have more than one nav per page,make sure they are labelled so that assitive technology is able to understand which nav is which.This we can achieve using an attribute called aria-label.This we could set it to something like,say: aria-label='primary-navigation' for the header nav. 
+
+  >>section--we can have multiple sections in a page.This sections are usually wrapped in the main element.
+   +.Instead of section you can use article tag even though both would work the same.But its worth noting that inside the article you could have sections as well.This means you can use section tags inside the article tag.
+   +.Actually article could wrap all the content with h2 heading.That is if you have them in your page.Section tag could wrap contents under h3 heading.This is if you have them in your page.
+   +.We could have clear sections inside our article tag with h3 headings.
+   +.h1 being the heading for nav,h2 being the heading for articles,h3 being headings for the various sections.
+
+  >>aside --used inside sections.often at times you think of aside as the side bar to the page but it could also be some other section of complementary text that is not as important as what is in the main section or article that you are putting it inside.
+
+  >>details and summery semantic elements--They work together with summery element inside the details element.The summery,if this was a product,you might just put some warranty information in it.
+  +.Lets see an example demonstrating how they work,in the summery i want to put something that is more like a question.
+  +.Underneath in the details ,I can put the answer to this.
+    I.E <aside>
+          <details>
+              <summery>
+                 Guess the <mark> number of hours</mark>I codde per day
+              </summery>
+              <p>
+                I start at <time datetime='08:00'> 8 am </time>and write code for <time datetime='PT3H'>3 hours</time> every morning.
+              </p>
+          </details>
+        <aside>
+
+  >>mark --Is also a semantic element.Works same as how a marker could.
+
+  >>time  --when using it make sure to use the datetime attribute where you specify the time in the format you wish.I.e you could write your time as the value to this attribute using the 24 hour format.
+  +.For duration we use for example,a value like,say:PT3H to mean 3 hours.
+
+  >>header element--wrap the h1 and the navigationt.You can have more than one header elements in your we page,find out where you can include this.We've already seen one-wraping h1 and the navigation area.
+  
+  >>main element--we can only have one main element/main area for content per page.
+
+  >>footer--just like header,we can have multiple footer elements per page.I.e that for a blog post,social media post..etc.
+
+  >>list is also semantic html
+
+=>In older html pages you may see div elements everywhere.However there is no semantic meaning to a div.Think of a div like a section without a semantic meaning.It just stands for divider and really you can put them anywhere.But if you do,you really have to do alot of work to have them to convey meaning.You have to add additional attributes that help assistive attributes interpret this elements.
+=>Another element with no semantic meaning is the span.
+=>We use div and span mostly to just apply style but they generally have no semantic meaning.
+=>As you learn HTML you really want to avoid using div and span elements,instead you should really work on using semantic elements and then when you understand what semantic elements are and how to use them  and then occassionaly when just no semantic Html element is not the correct choice,that is the time we now have to use div and span tags.
+
+=>Actually,semantic HTML does not change how our page looks like but it does change how the browser interprets and adds also a benefit for assistive technology.
+=>You can download a chrome extenstion,namely,HTML5 outliner.If you click on it,you will be able to see an outline of our current page.
+=>To validate you page,you can upload you html page on validator.w3.org
+  +.If you html file has any issues,then it will tell you.
+
+  This wraps up that much we needed to know from a body tag point of view.
+    -->
+    <h1>Heading1</h1>
+    <h2>Heading2</h2>
+
+    <a href="practice1.html">Practice 1 page</a>
+
+    <div>Block1</div>
+    <div>block2</div>
+    <br />
+
+    <span>Inline1</span>
+    <span>Inline2</span>
+
+    <ul>
+      <li>Bread</li>
+      <li>Sugar</li>
+      <li>Tea</li>
+    </ul>
+
+    <ol>
+      <li>Reach point A</li>
+      <li>Turn left and reach point B</li>
+      <li>Turn left and arrive at point C</li>
+    </ol>
+
+    <dl>
+      <dt>Ice cream</dt>
+      <dd>-A soft sweet frozen food.</dd>
+
+      <dt>Tea</dt>
+      <dd>-A hot drink</dd>
+    </dl>
+
+    <p>
+      <del>Lorem ipsum dolor</del> <ins> sit amet consectetur </ins>adipisicing
+      elit. Natus quidem ex <strong> maxime </strong>accusantium vero laborum
+      totam neque <em>quam</em> eligendi repellendus earum excepturi adipisci
+      ipsum eum <small>dignissimos </small> similique nobis, error
+      <mark> sint?</mark> <sup>TM</sup>
+    </p>
+    <hr />
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quidem ex
+      maxime accusantium vero laborum totam neque quam eligendi repellendus
+      earum excepturi adipisci ipsum eum dignissimos similique nobis, error
+      sint?
+    </p>
+    <img src="img1.jpg" alt="" width="200" height="200" />
+    <table>
+      <thead>
+        <tr>
+          <th>Heading 1</th>
+          <th>Heading 2</th>
+          <th>Heading 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+        <tr>
+          <td>Data 7</td>
+          <td>Data 8</td>
+          <td>Data 9</td>
+        </tr>
+      </tbody>
+    </table>
+    <form action="">
+      <label for="username">Username</label><br />
+      <input type="text" id="username" /><br /><br />
+
+      <label for="about">About You</label><br />
+      <textarea name="" id="about" cols="30" rows="10"></textarea><br>
+
+      <label for="country">Select country</label><br>
+      <select name="" id="country">
+        <option value="kenya">Kenya</option>
+        <option value="tanzania">Tanzania</option>
+        <option value="uganda">Uganda</option>
+      </select><br><br>
+
+      <label for="">Job type</label><br>
+      <input type="radio" name="jobtype" value="part time" id="parttime">
+      <label for="parttime">Part time</label><br>
+      <input type="radio" value="fulltime" name="jobtype" id="fulltime">
+      <label for="fulltime">Full time</label><br><br>
+
+      <label for="">Select Hobby</label><br>
+      <input type="checkbox" value="swimming" id="swimming" name="hobby">
+      <label for="swimming">Swimming</label>
+      <input type="checkbox" value="reading" name="hobby" id="reading">
+      <label for="reading">Reading</label>
+      <input type="checkbox" value="watching" id="watching" name="hobby">
+      <label for="watching">Watching</label>
+      <input type="checkbox" value="relaxing" name="hobby" id="relaxing">
+      <label for="relaxing">Relaxing</label>
+
+      <button>submit</button>
+    </form>
+  </body>
+</html>
