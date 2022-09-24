@@ -1,0 +1,376 @@
+/* 
+--With CSS you control the layout of the webpage,the sapcing between elements,what color the text should be in and so on.You do this by selectting HTML elements and applying styles to them.
+--Three ways to add css: inline styles,internal styles, external styles.
+1.Inline styles-->CSS declarations that affect a single HTML element.To add an inline style we add the style attribute to the relevant element.Whenever possible avoid it.Has a usecacse when you start building complex applications,EX:Styling HTML Templates for emails and perhaps styling content in a content management system.
+
+2.Internal style sheet-->Within the head section of the html doc.Also not the recommended approach for adding styling.Can be useful if you have only one webpage or perhaps when working with a content management system where you are blocked from modifying external css files.
+
+3.External Style sheet-->Easier maintenance,easier code readability.Best when working with multiple web pages which require similar styling for some elements.
+
+CSS SELECTORS
+==================
+1.type/element selector--We specify an html element then the css rule selects all of them in the html doc.
+
+2.Universal Selector--Seleccts every elemnt in the html doc. Denoted by an asterisk.Used to reset properties that the browser adds by default, which we may not necvessarilly need for our page.Google, css reset to understand more about this.
+
+3.class selector--Useful in cases where you may want to style two elements differently.Most common way to style elements in a webpage.You write style for a class once and apply that class to every html element you would want styled in a similar fashion.
+
+4.id selector--Similar to class selector,except it is used to apply to one specific element in the page as  id is unique.Rarely used but useful to target an element that has a style already applied perhaps from an external library.
+
+This are the basic selectors a beginner should know.It is possible to combine this selectors to form advanced selctor.For advanced selectors, go to Mozzilla docs and learn combinators that lets you select elements in more sophisticated ways.EX: Selecting a paragrapgh element only if it is within a div tag or selecting a paragragh tag only if it has an adjuscent paragrapgh element.
+
+Properties you are likely to use in you day to day work when building web pages
+--------------------------------------------------------------------------------
+A.color and background coloring.
+--------------------------------
+1.color  --can be specified in multiple ways:
+        +.hex value --specify hash symbol followed by a hex value which ranges from 6 zeroes(black) to 6 F's(white).
+        +.rgba format --we specify red green blue values from 0 -255 and finally the opacity(0-1).
+  =>background-color--Specifies background color for an element.
+
+B.Text styling
+---------------
+--CSS properties used to style text generally fall into 2 categories.Font styles and text layout styles.
+  1.font style->On windows chrome by defaut the font is Times new roman.If you inspect the element then head over to computed, you will be able to verify this.We can change that using the font-family property.Not every OS or browser mayy support the font you may specify.It is therefore a good idea to add a websafe font as a backup font. VS code does a good job for auto-completing web safe fonts for a few font families.It will ideally auto-complet all the fall-back fonts.
+     =>font-family
+     =>font-weight
+     =>font-style
+     =>text-decoration
+     =>font-size -->controls the height of the text.
+These are most commonly used font related properties.
+ 
+  2.Text layout properties
+    => text-align --Controls how text is aligned in it's containing box.
+   =>line-height --Sets the height of each line of text.We can set this to 2, nothing but this sets the height to twice the height of it's font height.
+   =>letter spacing and word spacing--Control spacing between letters and words in your text
+
+C.Styling lists
+================
+By default,bullets(solid circle) is used to show ul
+We can change this by using: list-style-type ppty --Disk is the default, we can change it to circle to display a hollow circle.We can change it to even square or none to remove the markers.Infact most of the lists in a well designed web page will not have a bullet point.
+
+Lists have some default spacing.To remove that,we need to set two properties: margin and padding to 0.
+
+That was a quick walkthrough on a few list related properties and values with css.
+
+THE CSS BOX MODEL
+====================
+Mainly revolves around 3 properties: border,padding and margin
+In web design,every element is considered a rectangular box and understanding this box is the key to create layouts with css or align items with other items.It is sort of a standard by which browsers render HTML elements.
+The box consists of 4 parts:borders,margin,padding and the actual content.
+1.Content box-->Area where content is displayed.Can be sized using properties like width and height.
+2.Padding box-->sits around the content box as white space and it's size can be controlled using padding and related properties.
+3.Border box-->wraps the content and any padding.It's size and style can be controlled using border and related properties.
+4.Margin box-->Outer most layer wrapping the content,padding and border as white space between this box and other elements/boxes.It's size can be controlled by margin and related properties.
+
+NB:Box model has developer tool support for it.Select a particular element and you can clearly see the respective dimensions of the box model elements and make judgement and adjustments as per your needs.This is verry useful when debugging your layout.
+
+The different properties and how they affect the content being displayed.
+--------------------------------------------------------------------------
+=>border
+=>height
+=>width
+=>padding
+=>margin
+
+The above properties are very common when building web pages.After getting a good grasp,I would recommend you to learn abit more about this properties as it is possible to add padding or even margin in only one direction.EX: padding top,margin right,margin bottom,...etc.
+
+You can also look at the border radius property which adds curvatures to the corners of the border.
+
+The next set of topics may not sound as a big deal right now but when you start working on projects,trust me agood understanding will save you good hours of debugging.These topics include: Cascade,Specificity,Inheritance.
+
+CASCADE
+---------
+When two rules apply that have equal specificity,the one that comes last in the css is the one that will be used.
+
+SPECIFICITY
+------------
+Is how the browser decides which rule applies if multiple rules have different selectors but apply to the same element.
+
+Different selectors have different specificity.
+An element selector has the least specificity.
+A class selector has more specificity than an element selector.
+An id selector is even more specific than both class and element selector.
+An inline style has the highest specificity than id,class,element selector.
+Rules are meant to be broken and CSS Specificity is no exception.When we add the "important" keyword to a style declaration,it automatically becomes the most specific style.Syntax: !important
+You will see this "important" keyword used in some codebases but trust me this is not the right way to add styles.
+The extreme case of using "important" keyword is when you want to overrride third party library css and you have no other way.
+When people say CSS is hard is because they do not understand how specificity works.
+This topic will help you when working on large projects that have lots of styling.
+
+INHERITANCE
+------------
+You should know that some css property values set on parent elements are inherited by their child elememts, and some aren't.You don't have to remember all the properties, but some like color and font related properties are inherited by text.
+
+Cascade,Specificity and inheritance, come back to this topics if you get frustrated of why some styles being applied or not for certain elements.
+
+Whatever we've studied sor far is just the core concepts you need.
+
+STYLING TABLES
+------------------
+A.th and td tags:
+=>border
+  +.If you apply this style,the table will look like indivudual cells,So along with this we can make use of the border-collapse property below on table tag.
+B.table tag:
+=>border-collapse
+  +.You can set its value to collapse.This will make the table look better and not individual cells.
+=>width:100%
+  +.makes the table take up the entire available width.
+  +.You can specify your own measurements though as per your need.
+
+Sometimes you may want the table to take up the entire available width. Inthat case you can set the width to 100% for the table tag.
+
+Alignement:
+By default th tag is center aligned and td tag is left aligned, you can control this by using: text-align property on the respective tags.
+
+Also depending on the height of each cell, you can also control the vertical alignement. 
+You can set the height of the content area in the cell using the height property.
+Using vertical alignment property you can choose to align the content based on you preference.
+
+To add spacing within the cell,you can add padding in th and td tags.
+
+To make the table look more fancy you can change border in all directions to just border bottom.Like this you will only see the separation of each row rather than each cell in the table.
+
+Of course you are going to come across variety of table styles when you start browsing websites, but whatever we've seen so far are the fundamenmtal properties you need to know as a beginer.
+
+We are done styling most of the html elements, now its time to focus on some of CSS properties which affect the layout of the web page.
+
+1.Display property
+--------------------
+Specifies if and how an element is dispalyed.Previously we mentioned thateach html element has a default display value, it can be block i.e div tag or inline i.e span tag.
+Now using display css property you can set the display value for any html element explicitly to either block or inline values.
+The third value of display property you should know as a beginner is=>display:none
+If i set the value of display property to none for any html element then that element won't be displayed on the browser.This value is typically used with js to show or hide elements.
+
+Display infact has alot more values two of them flex and grid, dictating how layouts are formed in mordern websites.There is quite abit to learn on this two which we will learn later.For now make sure you understand, block,inline and none.
+
+2.Position property
+----------------------
+The next property when it comes to css layout is the position property which specifies the type of positioning method used for an element.There are 5 different values:
+1.static --Elements are positioned according to the normal flow of the page.In html document,elements that are defined first appear in the web browser on top of those that have been defined later.
+By default, the position property of an element is set to static.
+
+This default positioning layout can easily be changed with other positioning layout values.
+2.relative-->element with this positioning value is positioned relative to its normal positioning.This relative position you can control with other 4 properties namely: top,bottom,right and left.
+The top, right, bottom, and left properties determine the final location of positioned elements.
+=>When an element is relatively positioned,It is worth noting that,other elements in the browser won't be adjusted to fit in the space left by this relatively positioned element.
+3.fixed--Positions an element relative to the view port.The top,bottom,left and right properties also apply and determine the final location of positioned elements.What is special with fixed position is that even if you scroll the element stays in the same place. 
+You may have probablly seen feedback or even chatbot buttons  in webpages which are always positioned bottom right.
+4.absolute--Almost similar to the fixed positioning property, the only difference is if you scroll the element does not stay in the same place.
+However if the element has a different parent element with a relative position.Then the position will be relative to that parent elemnt.Ex:I have a div tag(parent element) with positioning propety set to relative and some other tag i.e another div(child) with positioning set to absolute, then the positioning of the child element will absolutely be positioned inside the parent element.
+This is something you are often going to use when developing webpages.Absolute postion but within a relatively positioned element.
+5.sticky--An element with this position value is positioned based on the users scroll position.During scrolling, if you encounter a sticky postioned element then as you proceed with scrolling then that element will stick at it's position and will remain visible as you keep scrolling to the bottom.Uncomment the postion1 element postion: sticky property to see this behavior.
+In a webpage if you have something you want to stay in the normal layout of the page and always visible as they scroll , then postion sticky is a very good option.
+
+CSS UNITS
+--------------
+2 categories: relative and absolute units.
+1.absolute units-->always generally considered to be of the same size.They are quite a few, however pixel is the only value you will commonly use and is the only value u've seen so far.absolute units are useful for layouts where the page need to be printed.EX:
+centimeters -->1cm=37.8px=25.2/64in
+millimeters-->1mm=1/10th of 1cm
+Quater-millimeters-->1Q=1/40th of 1cm
+Inches-->1in=2.54cm=96px
+Picas-->1pc=1/6th of 1in
+Points-->1pt=1/72th of 1in.
+pixels-->1px=1/96th of 1in.
+
+2.Relative units-->always relative to something else,perhaps the size of the parent element's font,or the size of the viewport.The benefit of using relative units is that with some careful planning, you can make it so that the size of the text or some other elements,scales relative to everything else on the page.EX's: 
+ unit   Relative to
+ -----  ---------------------------------------------------------------------------------------------------------------------------------------
+1.em-->1 em is the font size of the parent, in the case of typographical properties like font-size,and the font size of the element itslef,in the cases of other properties like width.
+So if you specify like say height:2em ,this typically means the height will be twice the font-size.You can try this out and inspect to verify.
+2.ex-->x-height of the elemnt's font.
+3.ch-->The advance measures(width)of the glyph "0" of the elements font.
+4.rem-->Font size of the root element.
+lh-->Line height of the element.
+vw-->1% of the viewport's width.
+vh-->1% of the viewport's height.
+vmin-->1% of the viewports smaller dimension
+vmax-->1% of the viewport's larger dimension.
+
+Not every unit here is used regularly.A few popular ones include: em,rem,vh,vw which you as a beginner should know of.
+
+em can also be used for font size on a child element.Here 1 em will be the font-size of the parent element,and whatever child property value you represent using em unit will be relative to the parent element.
+
+The next relative unit to know about is rem-->relative to the font size of the root element(Typically root element will be the body element).
+rem is a unit commonly used to specify font sizes in a webpage.Make sure you remember how this works.
+
+Finally there is vh and vw for viewport relative height and  viewport relative width.
+EX: height:50vh -->The element using this style say a div,will take up 50% of the viewport/screen height.
+     width:50vw -->The element using this style say a div,will take up 50% of the viewport/screen width.
+
+3 MATH FUNCTIONS WHICH CAN BE USED AS PROPERTY VALUES
+----------------------------------------------------
+1.calc function  --on the rem elemnt am going to set height as: calc(50vh - 100px).This is useful for example when you want to subtract the nav bar height for calculating the avilable height for your content.
+NB:Make sure there is spacing between the operator and operands when working with math functions in css.
+2.max function--uses the largest value from a comma separated list of values.EX:height:max(50vh,600px)
+3.min function--Works similar to max function but the opsite now will happen.
+
+NB:Both max and min can be used to set a minimum or maximum height or width for an element and allow it to take on th a]other value based on the screen size.You might wan't an element at 500px but on larger monitors it can take up more than 500px as it will be okay with more space on the screen.
+
+This is the end of the Crash course on css for beginners.
+
+*/
+/* color and background coloring. */
+h1{
+  color: blue;
+}
+
+.error{
+color: red;
+}
+
+.success{
+  color: green;
+}
+
+#test{
+  color: maroon;
+}
+
+.orange{
+  background-color: orange;
+  text-align: center;
+  line-height: 2;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+}
+.yellow{
+  background-color: yellow;
+}
+
+.font-family{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: underline;
+  font-size: 50px;
+}
+
+ul{
+  list-style-type:none;
+  margin:0;
+  padding: 0;
+}
+.box-model{
+  /* 
+  Like this height and width affect the content.
+  */
+  /* 1px thick,solid-continous line,red color */
+  border: 1px solid red;  
+   /*makes content a little bit taller  */
+  height: 50px;
+  /* restricts width instead of spaning the entire width of the browser. */
+  width: 300px;
+  /* Adds spacing between the content and the border in all 4 direction */
+  padding: 20px;
+  /* adds space outside the border in all directions adjuscent to other elements.Makes the box get displased from its original position.The side the box is not adjucent to any element will not be affected.*/
+  margin: 20px;
+}
+/* Cascade */
+h2{
+  color:red;
+}
+h2{
+  color: blue;
+}
+/* Specificity */
+h3{
+  color: red !important;
+}
+.sub-heading{
+  color: blue;
+}
+#subheading1{
+  color: orange;
+}
+.inheritance{
+  color: orange;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+}
+/* Styling tables */
+th,td{
+  /* still makes the table look like individual cells */
+  border: 1px solid black;
+
+  /* border-bottom: 1px solid black; */
+  
+  /* While using this you opt not to use height and verticle align in the td tag,as ideally it almost the same thing it achieves */
+  padding: 15px;
+}
+table{
+  /* Solve the problem of the table looking like individual cells and now make the table look like more of a table now.*/
+  border-collapse: collapse;
+  width: 60%;
+}
+td{
+  text-align: center;
+  /* height: 50px;
+  vertical-align:middle; */
+}
+
+/* display property */
+.content1{
+  border: 1px solid olivedrab;
+  display: inline;
+}
+.content2{
+  border: 1px solid olive;
+  display: block;
+}
+
+/* position css property */
+.position1{
+border:1px solid red;
+position: relative;
+position: sticky;
+/* This elementt will be pushed/displaced 50px from the top */
+top: 50px;
+/* This element will be pushed/displaced 50px from the left */
+left: 50px;
+/* Similar to top and left properties, we also have bottom and right properties which have the smae effect but from the opposite direction.
+It is also worth noting that position2 elemnt is not adjusted to fit in any gap left by position1 element 
+This is how relative position actually works.*/
+}
+.position2{
+border: 1px solid blue;
+position: fixed;
+position: absolute;
+/* What is special with fixed positionis that even if you scroll the element stays in the same place. */
+bottom: 0px;
+right: 0px;
+}
+.container{
+  position: relative;
+  width: 200px;
+  height: 2000px;
+  border: 1px solid black;
+}
+/* relative units */
+.em-container{
+  /* in thi scenario 1 em =font-size of the elemnt(20px), so 2 em=40px
+  This you can proove by inspecting the elemnt and you will see under computed that heigth is 40px.*/
+  font-size: 20px;
+  height: 2em;
+
+}
+/* em can also be used for font size on a child elemnt */
+.em{
+  /* what happens here is that 1 em(20px) is the font-size of the parent element and using that we are derriving the font-size of the child element to 1.5em(30px)
+  As you can see the em unit is a relative unit */
+  font-size: 1.5em;
+}
+/* This unit is commonly used to specify font sizesin web pages.Make sure to remember how this works*/
+.rem{
+  /* font-size wil be 32px because 1 rem in this case is 16px which is thje default font-size of the body element.Inspect this to verify.*/
+  font-size: 2rem;
+  /* vh relative unit
+  If you save and refresh the browser, you can see the height of the div tag  is 50% of the view port height*/
+  height: 50vh;
+  height: calc(50vh - 100px);/* if you refresh you can see that the height will have decrased by 100px*/
+  height: max(50vh,600px);/*Height will be 600px bcs that the largest of this two values.Inspct this element to verify.*/
+  height: min(50vh,600px);/* Height will be reduced to 50vh as it is the smallest of the 2 values.*/
+  border: 1px solid black;
+  /* vw relative unit
+  Works on a similar principle as vh relative unit but on the width of the element */
+  width: 50vw;
+}
