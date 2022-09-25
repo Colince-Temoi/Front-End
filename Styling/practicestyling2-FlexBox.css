@@ -1,0 +1,349 @@
+/* If you have a question on whether you should be learning Flexbox or grid my advice is you shuold learn both:
+Flex  box is gr8 for one directional flow and can actually work alongside grid for more complex layouts.
+It is not rare to see code bases which use both
+
+What is flex box
+-------------------
+The css flexible box module or simply known as flexbox is a one-dimensional layout model.
+
+It allows you design flexible and efficient layouts,align and distribute space among items in a container.
+
+Flex  box allows you arrange elemnts is a webpage with ease.
+
+LAYOUT MODES BEFORE FLEXBOX
+----------------------------
+=>Block,for sections in a webpage.
+=>inline,for text
+=>Table,for 2-dimentional table data
+=>positioned,for explicit position of an element.
+
+This layouts however did not provide enough flexibility.We had to find all kinds of hacks to get the layout just the way we wanted.Working with floats, trying to vertically align content,create equal height columns,haah well they were kind of a nightmare.
+
+Flex layout on the other hand provides:
+=>alot of flexibility
+=>We can arrange items.  from left to right,right to left,up to bottom, bottom to top and at the same time control the :
+=>spacing,
+=>alignment
+=> and the order of items in the container.
+tbh, it has sort of become a must know for frontend developers.
+Understanding the below terminologies is essential to this course.
+TERMINOLOGY
+------------
+When we talk about flexbox we mainly have two entities, a parent container which we term as the flex container and the immediate children elemnts which we term as Flex items.
+
+We also deal with two axes when we work with flexbox:
+=>Main Axis--By default, runs from left to right.
+   The start of the Main axis is termed as the Main start and the end is termed as the Main end.
+   The legnth from main start to mainend is called the main size.
+   So we can say that the flex items flow from mainstart to main end and  take up the main size as the length.
+=>Cross Axis--Perpendicular to Main axis and runs from top to bottom.
+  Similarly, with Cross axis we have cross start cross end and cross size.
+  
+  We can also change the direction of the main and cross axes by changing how the items are layed out in the container.This we will talk about later in the course.
+  
+  Understanding flex box is basically getting familiar with the properties associated with flex container and flex items.Nothing fancy, you just learn it the way you learned css.Just know what properties exist and how they work.
+  
+  FLEX CONTAINER PROPERTIES
+  ==========================
+  They are 10 in total
+  1.display ppty-->Is what defines a flex container and is mandatory to work with flex box.
+  2.flex-direction-->defines the direction in which flex items are placed within the container.
+  3.flex-wrap-->Used to control the wrapping of items within the container.
+  4.flex-flow--.shorthand for the combination of flex-flow and flex-wrap.
+  5.column-gap-->set gaps btn columns
+  6.row-gap-->set gaps between rows
+  7.gap-->shorthand for column-gap and row-gap
+  8.justify-content-->defines the alignment of the items along the main axis.
+  9.align-items-->defines how flex items are laid out along the cross axis.
+  10.align-content ppty--.similar to justify-content ppty with the difference being this will align items along the cross axis and not main axis.Works only if their are multiple rows of flex items in the container.
+  
+  */
+ /* To create a flex container,make use of the display property and set it to flex.
+ As with all css ppties some initial values are always defined,so when creating aflex container all of the contained flex items behave in a certain way:
+ 1.First they will display in a row.
+ 2.Second items begin from the begining of the main axis ,that is the left most point but do not stretch till the end.However they can only shrink to a certain extend.
+ 3.Items will stretch to fill the length of the cross axis(cross size),that is from the top to the bottom
+
+ You can also notice from the border, that the flex container iself has 100% width so it behaves like a block level element.
+
+ If you do not want a block level flex contianer,you can set the display ppty to inline-flex and create an inline flex container.Like this the border will now wrap around the flex items.The container will only take up space to accommodate its children.
+
+ */
+  /* 2.flex-direction 
+  Establishes the main axis,which itern determines how flex items are placed within the flex container
+  By default the main axis flows from left to right,which is the reason we see items placed from left to right in the browser.
+  By changing the value of the flex-direction ppty we can chnge how the items are placed.
+  Flex-direction ppty can accept one of the following 4 values:
+              1.row-->is the default value.Items flow from left to right.
+              2.row-reverse-->Sets the main axis direction from right to left,which results in the flex items being placed from right to left.
+              3.column-->Sets the main axis direction from top to bottom.Items will be stack on top of each other.
+              4.column-reverse-->Sets main axis direction from bottom to top.Items will be arranged in a reverse order to that of  column value. */
+ /*3.flex-wrap
+  Items in a flex conainer can shrink to a certain extend to fit in a single line.If there is no enough space,the items simply overflow.
+  If i go to the browser and start reducing the browser width, you will notice that the items begin to shrink but until a certain extend and finally they will begin overflowing out of view.This behavior we can change it using the flex-wrap ppty.
+  Flex wrap will accept 1 of 3 ppties:
+                   1.nowrap  -->the default values
+                   2.wrap -->If you want the flex items to wrap withing the flex container,use this value.If there is not much horizontal space for the flex items to fit in one row,then happilly,instead of the items overflowing,they will be moved to a new row.
+                   3.wrap-reverse-->What this does is instead of the overflowed items falling in the row below,they will instead climb to the row above.
+NB:Vertical wraping of items is also possible,for that what we need to do is change the flex direction to column and add a height to the flex container.
+In the case vertical space is limited, a new column will be created to the right, and items that could not be acommodated with a particular specified height,are happilly shifted to the second column.
+If I change the flex-wrap ppty value to wrap-reverse, then the items that could not be acommodated with a particular specified height,are happilly shifted to the second column,but to the left.
+ */
+  /*4.flex-flow
+   Is a shorthand of flex-direction and flex-wrap  properties.
+   is by default set to values: row nowrap, which are the default value of the respective individual flex properties.
+   The first value is the flex direction value while the second value is the flex-wrap property
+   You can type any combination of the possible values and the layout will adjust accordingly*/
+/* Next set of properties deal with spacing between rows and columns
+
+4.column-gap ppty-->Sets gaps between columns
+5.row-gap ppty-->Sets gaps between rows.To verify this property, we need more than one row.
+6.gap ppty-->shorthand ppty for row-gap and column-gap . The first value is the row gap while the second value is the column gap.
+Value can only be non negative value or a percentage.
+*/
+ /*Next set of properties are concerned with alignment
+  7.justify-content ppty -->Defines the alignment along the main axis.
+  By default justify content is set to the value: felx-start which places the flex items at the beginning of the main axis(main start)
+  Other possible values are:
+        2.flex-end -->Causes flex items be placed at the end of the main axis(Main end)
+        3.center-->Aligns flex items at the center of the main axis.
+        Flex box provides additional values that can control how the extra spaces has to be distributed within the container.
+4.We have: justify-content: space-between   -->The extra space within the container is evenly split and added between the flex items.
+Sometimes you may want the space before the first item and after the last item.For such scenario,we use the value: 
+5.space-around  -->This space will be half the space between the respective flex items.
+6.space-evenly-->If you want the same space before the first item and after the last item same to the space between the flex items.
+
+The most important point to note here is ,justify-content property aligns content based on the MAIN AXIS...!!! hahah
+If we said flex-direction to column,which changes the main axis from top to bottom,then justify content will deal with vertical alignment. This is something that was a real struggle before flex box came into the limelight.But with flexbox,this has been made easier.
+        */
+/* The next alignment property is:
+align-items ppty-->Defines the default behaviour for how flex items are laid out along the cross axis of the container.This means,it works just like justify-content but in the perpendicular direction.
+To visualize the changes,we need a height on the container.Just set it to 800px
+By default the value of align-items is: 
+1.stretch
+That means the flex items stretch the entire,legth of the cross axis.
+2.flex-start-->All items are pushed to the cross start which is the starting point of the cross axis.Even though the height is 800px,the items will be pushed to the cross start, they wont stretch to cover the entire height.
+3.flex-end-->Similar to flex start. only that the items will be pushed to the end of the cross axis.
+4.center--.centers items at the center of the cross axis.
+4.baseline-->Is a line upon which most letters sit.Coming to flex box the basevalue for flex items,will align flex items along there contents baseline.To iilustrate this modify the css of some flex items.I.E Use padding-bottom:3rem;, padding-bottom:5rem, padding-bottom:3rem,...etc property.
+now if you set the value of align-items to:baseline. You will notice, that the items will be positioned in such a way that the text in all this items is aligned.
+
+You can also flip the cross axis, by setting flex-direction to column and test how the alignment works.Do that as exercise.
+
+*/
+  /*Now lets proceed to the last property that can be applied to the flex container which is the: align-content ppty 
+  This property aligns lines of content along the cross axis similar to how justify-content aligns individual items in the main axis.So, It distributes additional space but along the cross axis.
+  One very important condition is that, multiple rows/lines must exist within the container.If not then it has no effect.
+
+  Make sure to first have a height on the container, and enable wraping of items.height:800px; flex-wrap:wrap;
+  Wrapping is required to force content when the width is minimized into additional lines/rows.
+  Go back to html and uncomment the remaining 4 items.
+  align-content ppty is used to align rows/lines of items into the container,the default value is stretch-->You can clearly see that both the rows/lines stretch to fill the available space.
+  The different possible values include:
+                1.stretch
+                2.flext-start -->pulls the rows to the beginning of the cross axis.
+                3.flex-end--->pulls the rows to the end of the cross axis.
+                4.center-->centers the rows at the center of the cross axis.
+                5.space-between-->Takes all extra space and puts it in between the rows.
+                6.space-around-->distribute space around the rows.The center portion has twice space as that of the edges.
+ 
+                */
+    /* With that we've covered all the properties that work on a flex container*/
+      /* Flex item properties
+    ------------------------
+     1.order-->Controls the order in which they appear in the flex container.
+     2.flex-grow -->Defines the ability for a flex item to grow if necessary
+     3.flex-shrink-->defines the ability of a flex item to shrink if necessary.
+     4.flex-basis-->specifies the intial minimum size of a flex item.
+     5.flex-->shorthand property for : flex-grow,flex-shrink and flex-basis properties.
+     6.align-self-->allows alignment of individual flex items.
+
+     1.order ppty-->On the container class if i comment out all the properties except dispaly and border, it is evident that flex items in the container are laid out in the container based on the order in which they are specified in the source code.That however can be changed using the order property.
+     On item three,if i specify the property, order:1; then happilly that item will be pushed all the way to the end -->immediately after the last item.
+    This is  Because ,all flex items by default order of zero.order:1; is greater than order of all other items and hence item 3 appears at the very end. 
+    Like this we can use the order property to arrange the flex items however we want.
+    If you specify same order number for multiple flex items,the items will appear in the same order in which they are specified in the source code.
+    This property accepts an integer value.
+
+    2.flex-grow ppty-->Specifies what amount of space inside the flex container  the item should take up if necessary.The flex-item grow factor is always relative to the other children in the flex container.
+    By default you can see that the flex items only take up space that is required to fit up the content, hence there is alot of space within the container.
+    Sometimes we don't want the additional white space,instead we want the flex items to grow to take up the additional white space.
+    By default, all the flex items have a default flex-grow value of zero which is why they don't take up the addtional space.
+    If you want all the flex items to evenly take up the additional space, then we set the flex-grow ppty value of all the flex items to 1.
+    If you set the flex-grow ppty of one or multiple elemnt a different value,say 2, then their growth will be twice that of the flex items whose flex-growth is set to 1.
+    =>Do not specify negative values.
+
+    3.flex-shrink ppty-->Unlike flex-grow the default value of flex-shrink is 1 for every single flex item.That is why if i try to reduce the width of the parent container,the flex items shrink to fit inside the container.But the shrinking happens only upto a certain point after which the items overflow.However, the flex shrink factor is still relative to other elements in the container.
+    Lets say you don't want the shrinking happening on the flex items,for that simply set the flex-shrink value to zero.When now you try reducing the width,there will be no shrinking anymore and the items will overflow right away.
+    =>Do not specify negative values.
+    It is also possible to control the shrinking for individual items.
+
+    4.flex-basis ppty-->Specifies the initial size of the flex item,b4 the extra space on the container is distributed.Used in place of the width property in flex layouts.So it can accept values in percentages,pixels,em,rem, or even keywords like auto.
+    By default flex-basis has it's value set to auto, which specifies the width of the flex item based on the content of the item.Items width is dependent on the content inside.
+
+    5.flex ppty-->Shorthand for flex-grow,flex-shrink and flex-basis ppties.Although we can specify the three individual properties individually,the recommended way is using flex property.Syntax: flex: <flex-grow><flex-shrink><flex-basis>
+    default: flex:0 1 auto;
+    0-->implies flex items won't grow to fit the container.
+    1-->Implies items will shrink when necessary.
+    auto-->Width of items will depend on their content.
+    The flex property can be specified using one or 2 or all the three values.
+
+    6.align-self ppty -->Used to control the alignment of the individual items.Values are pretty much the same like those of align-items property that are applicable on the flex container.The values are:
+        1.flex-start --Aligns a flex item  at the start of the cros axis.
+        2.flex-end-->Aligns a flex item at the end of the cross asis
+       3.center-->Aligns a flex item at the center of the cross axis.
+       4.stretch-->Stretches the flex item from the start of the cross axis to the end.If you compare with other items ,you may draw a conclusion that, stretch is the default value, but NOOO..! it is not.
+       5.auto-->Is the default value of align self, hence, align-self will be computed from the align-items property of the parent flex contianer.That is what will be considered as the default value for align-self.That is why Items 5 to 9 are stretched because the flex container has align-items  value of stretch which is the default value.If we change this to some other value, then happilly we can see clearly.
+     */
+/* And that was the end of css flexbox crash course */
+     body{
+    margin: 0;
+  }
+  .container{
+    /* display ppty
+      =>Used to create either blck level or inline level flex container.
+      =>possible values are: flex
+                             inline-flex
+    */
+    display:flex;
+    /* flex-direction ppty
+    =>sets the direction of the main axis.
+    =.Possible values are:
+              row
+              row-reverse
+              column
+              column-reverse */
+    /* flex-direction: column; */
+    /* height: 800px; */
+    /* flex-wrap ppty
+  => Used to control the warpping of flex items withhin the     container.
+  =>Take the below values:
+             nowrap
+             wrap
+             wrap-reverse
+   */
+    /* flex-wrap: wrap; */
+    /* flex-flow
+
+    Is a shorthand for flex direction and flex wrap.Syntax:
+    flex-flow:<flex-direction> <flex-wrap>;
+    set by default to : row nowrap
+  You can type any combination of possible values and the layout will adjust accordingly.EX:
+           =>row-reverse wrap
+           =>...etc
+
+     */
+    /* flex-flow: row wrap; */
+    /* To specify gap between columns */
+    /* column-gap: 20px; */
+    /* To specify values between rows */
+    /* row-gap: 30px; */
+ /* Short hand ppty for both row-gap and column-gap ppties.Syntax: gap: <row-gap><column-gap> 
+    Value can either be a non negative value or a percentage*/
+    /* gap: 40px 20px; */
+    /* justify-content ppty
+    Align items and distribute any extra spacing in the parent container.
+    The alignment is always along the main axis.
+    This property takes the values:
+         flex-start
+         flex-end
+         center
+         space-between
+         space-around
+         space-evenly */
+    /* justify-content:center; */
+    /* align-items ppty
+    Align items along the cross axis and distribute any extra space in the parent container.
+    The possible values are:
+          stretch
+          flex-start
+          flex-end
+          center
+          baseline */
+    align-items:flex-end;
+    /* align-content
+    Used to align lines/rows of content along the cross axis and distribute any extra spacing in the parent container. 
+    The possible values are:
+       flex-start
+       flex-end
+       center
+       space-between
+       space-around
+       stretch -->default value
+       */
+       /* align-content:flex-start; */
+       height: 300px;
+
+    border: 6px solid black;
+  }
+  .flex-item{
+    /* font color */
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.4rem;
+    /* width:3rem; */
+    text-align: center;
+    /* flex-grow: 1; */
+    /* Dictates the shrink factor of the flex items when the default size of flex items is larger then the flex container
+    Relative to othe items inthe container.
+    Default value is 1 */
+    /* flex-shrink: 0; */
+    
+  }
+  .item1{
+    background-color: #b4bf35;
+    /* padding-bottom: 3rem; */
+    /* order: 9; */
+    /* flex-grow: 3; */
+    /* flex-basis
+    Is used to set the inital size of a flex item
+    pixels,percentages,or relative units can be taken
+    default value is set to auto which determines the items width based on the items content */
+    flex-basis: 200px;
+ /* align-self ppty
+    Is used to align items individually.
+    takes Value like: auto,flex-start,flex-end,center and stretch
+   If spcified will always Overrides the alig-items value of the flex container.
+   dafault value is auto, nothing but will inherit the value of the align-items by default.*/
+    align-self: flex-start;
+  }
+  .item2{
+    background-color: #b95f21;
+    /* padding-bottom: 5rem; */
+    /* order: 8; */
+ /* This indicates that item2 is going to shrink4 times as much as the other items.
+    NB: Remember this is a relative factor,if all the other items shrink by 25px,item3 shrinks by 100px*/
+    flex-shrink:3;
+    align-self: flex-end;
+  }
+  .item3{
+    background-color: #1c4c56;
+    /* padding-bottom: 3rem; */
+    /* order: 5; */
+    align-self: center;
+  }
+  .item4{
+    background-color: #cfb276;
+    /* order: 2; */
+    align-self: stretch;
+  }
+  .item5{
+    background-color: #6b0803;
+    /* order: 6; */
+  }
+  .item6{
+    background-color: #1c4c56;
+    /* order: 3; */
+  }
+  .item7{
+    background-color: #b95f21;
+    /* order: 1; */
+  }
+  .item8{
+    background-color: #01243a;
+    /* order: 4; */
+  }
+  .item9{
+    background-color: #aad041;
+    /* order: 7; */
+  }
