@@ -1,0 +1,371 @@
+/* CSS Grid --Is a 2-d grid based layout system.
+With rows and columns,grid makes it easier to design web page layouts,align and distribute space among items in a grid
+Flex box is grid when we are dealing with  1-D layouts
+When dealing with 2-D layouts and you are concerned with laying out elements both horizontally and vertically, CSS grid makes the task so much easier including the complex layouts we typically tend to struggle with.
+If you are comfortable with HTML,CSS and Flexbox,CSS Grid is the logical next step for you.
+
+TERMINOLGY
+------------
+We mainly have two entities when we talk about CSS Grid: 
+Grid Continer -->Parent Container.
+Grid Items -->Immediate children elements.
+Other terms include: 
+Grid line -->Horizontal(row grid line) or vertical(column grid line) dividing line in a grid.
+Grid cell-->The smallest unit you can have on your css grid.Is the space between 4 intersecting grid lines.
+Grid track-->Is the space between two adjuscent grid lines.
+Grid area-->The total space soruonded by 4 grid lines.A grid area may be composed of any number of grid cells.
+
+These terms you don't have to memorize for the first time,However it does help when learning the different properties.
+
+Understanding Css grid is basically getting familiar with the properties associated with Grid Container and Grid items,Knowing what properties exist and how they work.
+
+Always refer to the documentation if you are having any trouble building any layout.
+
+PROPERTIES ASSOCIATED WITH GRID CONTAINER
+----------------------------------------
+There are 18 properties in total, in which we are going to learn 16 in this crash course.
+1.display ppty -->Is what defines a grid container and is mandatory to work with css grid.
+Has the following values:
+            1.grid-->If you use this value,you won't see any difference to how the grid items are displayed as display grid has created a single column for all the items.
+            When creating a grid container,all of the contained grid items are placed in rows by default and span the full width of the grid continer.So it does behave similar to a block level element.
+
+            2.inline-grid-->If you don't wan't a block level grid container,you can set the display property to inline-grid to create an inline grid.The container only takes up width to accomodate it's children which is in this case,the text in each of the items.
+
+If you wan't to explicitly set a grid by creating columns and rows,you need to make use of grid-template-columns and grid-template-rows ppties.
+
+2.grid-template-columns-->Set number of colunms in the grid.
+         The values to specify the columns are a space separated list of values,where each value specifies the size of respective column.The values can be in pixels,percentages,..etc or as a fraction of the free space available.
+         The values can be a non-negative leghth value like px,% etc or as a fraction of the free space avilable.
+         You can also use functcions like repeat() and minmax() to achieve the perfect grid layout.
+         grid-template-columns:100px 200px 300px;
+         This will create 3 columns which can easily be observed from the browser.
+         The grid container is still the entire width of the container however the grid items only take up 600px.
+         If you wan't to set up equal width columns then you can also specify that. I.E 200px,200px,200px
+         Sometimes you may wan't to specify equal width columns but for a greater/many number of columns, In that case of a scenario you can use a repeat function.
+         Instead of 200px 200px 200px, you can specify: repeat(3,200px) and the result will be the same as specifying: 200px,200px,200px because you will have three columns of equal width.
+         It is also possible to set the width of the column as a fraction of the avilable free space in the container.
+         EX: grid-template-columns: 1fr 2fr 1fr;
+         If you had 100% width of grid container space then column 1 and 3 will get 25% width space each and the middle column 50% of the width space.
+         Another function that is useful with grid is the minmax() function.We can specify: repeat(3,minmax(200px,1fr))
+         This means that the column should be atleast 200px but can grow to take up free space if availble.
+         You can verify this by trying to reduce the width of the grid container,This will shrink upto the point each column takes up 200px ,then past that the items start to overflow.
+
+  Note: This ppty also accepts align-name as part of the value ,but i've decided to leave that out as it could be confusing for a beginner.
+                  
+3.grid-template-rows-->Set number of rows in the grid.
+                  The values you can specify,is pretty much what you can specify for grid-template-columns.However you are now setting the height of the row instead of the width.
+                  You can set rows of different heights: 
+                  EX: grid-template-rows:100px 150px 200px;
+                  You can also specify: repeat(3,100px); and happilly we will have 3 rows of equal height.
+                  If you specify: repeat(3,100px) 200px; where 200px indicates the 4th row,you can happilly see a blank row at the end.It won't contain any grid items but the space is occupied by the grid container.
+                  You can also use the fraction unit if the container has adefined height.Say, height:400px and grid-template-rows:repeat(3,1fr); You will clearly see that the three rows will equally grow up to take the avilable space of the grid continer.
+Note:This ppty alaso allows align-name as part of the values which am going to leave out as it is not significant from a beginners perspective.
+
+4.grid-template-->Shorthand for defining rows and columns.
+              So instead of grid-template-columns and grid-template-rows, am going to add grid-template and the values going to be, the values of the rows I.E: repeat(3,1fr) followed by a forward slash then followed by the values of the columns I.E repeat(3,minmax(200px,1fr))
+
+    EX: grid-template: repeat(3,1fr)/repeat(3, minmax(200px,1fr)
+    When you refresh the browser,then you will notice that there is no change in the layout.
+
+5.column-gap-->Set gap between columns in the grid.
+6.row-gap-->set gap between rows in the grid.
+7.gap-->Shorthand ppty for row-gap and column-gap ppties.I.E gap:20px 40px; The first value is for row-gap,The second value is for column-gap.
+
+Now,lets go to properties concerned with alignment,There are two types of alignment properties: 
+      Within the grid cell.
+      Within the grid container.
+
+Properties concerned with alignment of grid items within grid cells
+----------------------------------------------------------------------
+8.justify-items-->To align the grid items along the row axis.In the container class,am going to comment out the gap ppty as we don't need that anymore.Am going to now add ,justify-items ppty.
+Value: 
+   1.stretch -->default value.Items take up the max row width space the cell can occupy.
+   2.start -->All items will be aligned to the start edge of there cell.You can verify this for clarity when you inspect the elemnt and hover on the grid container.
+   3.end-->Items will be pushed to the end of the cell.You can verify this for clarity when you inspect the elemnt and hover on the grid container.
+   4.center-->Items, horizontally centered within the cell.
+
+9.align-items-->Adjust alignment along the column axis.
+  1.stretch -->default value.Items take up the maximum vertical height the cell can occupy.
+  2.start -->Items pushed to the top of the cell.
+  3.end -->Items pushed to the end of the cell.
+  4.center-->Items, vertically center aligned within the cell.
+
+10.place-items-->Specify align-items and justify-items in a single declaration. Syntax: place-items:<align-items> <justify-items>.I.E place-items:start end; This will push the item to the top of the cell and then to the right of the cell.You can verify this from the browser.
+This ppty can also take one value and this will be assigned to both, align-items and justify-items. E.X: place-items:center; The grid items will be both vertically and horizontally center aligned in there cells.
+
+To understand ,the next set of properties,those that deal with alignment within the grid container,We need to make a small change within the grid-template value to,grid-template:repeat(3,200px)/repeat(3,200px) ;  Set height to 800px and comment out the place-items ppty.
+Now if you take a look at the browser,you can see the grid container with the black border has some extra free space with the three by three grid itself being smaller.
+This free/extra space give you the oppotunity to align the entire 3*3 grid log within the container.
+
+Content alignment Properties--Deal with alignment of the entire grid--alignment Within the grid container.
+----------------------------------------------------------------------------------------------------------
+11.jusify-content-->For alignment and spacing along the row axis.
+Align the content(grid log) along the row axis
+Values: 
+    1.start -->default value.grid log aligned at the top left position.Nothing but to the start of the row axis.
+    2.end  -->grid log moved to the end of the row axis.
+    3.center-->grid log centered on the row axis.
+grid also provides additional values that can control how the extra space can be distributed within the container.
+    4.space-between-->The free space that is present in the grid container is evenly split and placed between the grid columns.
+    5.space-around -->for evenly distributing the free space before the first column and after the last column as well us in between the columns.The space in between the columns is twice that before the starting column and that after the ending column.EX:If space in between the columns is 200px, that at the start and at the end will be 100px.
+    6.space-evenly-->If you want the space at the start and the end to be same as that in between the columns.
+    7.stretch
+12.align-content-->For alignment and spacing along the column axis.
+align the content(grid log) along the column axis
+Values are same as justify content, only that the result is effected along the column.
+  1.start  -->pushes the grid log to the top of the container.
+  2.end -->Pushes the content to the bottom of the container.
+  3.center -->Content will be center aligned vertically.
+  4.space-between -->Free space is evenly distributed  between the rows.
+  5.Space-around -->Adds space at the top and at the bottom as well.This space is equal to  1/2 to the space in between the rows.
+  6.space-evenly-->If you want the spame space at the top and bottom as well.
+  7.stretch
+
+13.place-content-->Short-hand for align-content and justify-content.syntax: place-content: <align-contnet><justify-content>
+This ppty can accept a single value, in which case,this same value is assigned to both align-content and justify-content.
+EX: If i specify, place-content:center; The grid log will both be vertically and horizontally center aligned in the grid container.
+
+Now lets move on to the last few properties that apply to the grid container.
+
+Properties to deal with auto generated grid tracks
+-------------------------------------------------
+14.grid-auto-flow -->Controls how auto-placed items get inserted into the grid.For this property am going to comments out all the properties,except display:grid; and of course the border.
+If you now check at the browser, you can see that items are placed in the grid container by filling each row.This is because the default value of grid autoflow is row.
+Values: 
+    1.row   -->Default value.
+    2.column -->Items will be placed in the grid by filling each column.
+    3.dense
+    4.row dense
+    5.column dense
+  =>Once you mastered the fundamentals you can look at: dense,row dense and column dense values.
+15.grid-auto-columns -->Used to specify the default width of the column.Currently we've not specified a column width.If you specify, grid-auto-columns:60px; you will clearly see from the browser that each column will have a width of 60px.
+This value will of course be overriden,if you have specified a column width using the grid-template-columns property.
+
+16.grid-auto-rows-->Used to specify the default height for rows within the grid.We can set it to a specifuc value if we want.I.E px,..etc
+
+Grid auto properties can accept valuen in: pixel,percentage,minmax,auto(default),etc
+
+Two more properties you will look at once you are comfortable with the properties discussed so far: 
+     17.grid-template-areas  -->Specify areas within the grid layout.
+     18.grid  -->Shorthand for grid-template-rows, grid-template-columns, grid-template-areas,grid-auto-rows,grid-auto-colums and finally grid-auto-flow
+
+Now lets look at the properties applicable to Grid items.
+Grid item properties
+--------------------
+The below two properties control on which column line the item starts and ends
+1.grid-column-start and 2.grid-column-end
+     Am going to comment out all the grid container properties except border, display and grid-template.If you check the browser,it is quite evident that, grid items by default take up one column in the grid container. This can easily be changed by using, grid-column-start and grid column-end.
+  On item1 am going to set,
+  grid-column-start:1;
+  grid-column-end:3;
+  Like this it is evident from the browser that,item1 starts from the first line in the grid and ends at the 3rd line in the grid.Nothing but it takes up 2 columns worth of space.
+  If i set it to end at 4, it takes up 3 columns.
+  If i set it to 5,it takes up 4 columns and the width will be the rest of the space.Which is why you see,item 5 and item 9 also take up more space than 200px.
+  Now if you are unsure about, the end column line,you can also specify how many columns it should span by using the span key word.
+  grid-column-end:span 2; Like this , meaning the grid item should span for two columns.
+
+The below two properties control on which row line the item starts and ends
+
+These next two properties,similar to what we've seen above, but deal with row lines.
+3.grid-row-start
+4.grid-row-end
+      grid-row-start: 1;
+      grid-row-end:3;
+Like this from the browser you can see that,item1 starts from the first row line and ends at the 3rd row line effectively taking up 2 rows of space.
+
+You can also use the span keyword.
+  grid-row-end:span 2;
+
+The below  two properties are short-hands for the prviously mentioned 4 properties
+5.grid-column
+   syntax: <grid-column-start>/<grid-column-end>
+6.grid-row
+   syntax: <grid-row-start>/<grid-row-end>
+
+Values for,grid-column-start,grid-column-end,grid-row-start,grid-row-end, grid-column and grid-row can be a grid line number or the number of columns or rows the item has to span.
+
+Finally we have properties for aligning items within a cell: 
+=>Ealier,we had a look at Justify-items,align-items and place-items which apply to every item in the container,However if you want alignment for one single item,we amke use for the below properties.
+7.justify-self 
+
+Possible values: 
+  1.stretch -->This is the default value.If you check the browser,you won't see any change.
+  2.start -->Item will be pushed to the start of the row axis at the start of the cell.
+  3.end -->Item will be pushed to the end of the row axis at the end of the cell.
+  4.center -->Item will be center aligned along the row axis.
+8.align-self
+ Takes values similar to those of  justify-self but the effect is on the column.
+  Possible values:
+     1.stretch -->deafult value.When i Refresh,you can see that the item stretches from top to bottom.No change is visible.
+     2.start -->item will be pushed to the top of the column axis.
+     3.end -->Item will be pushed to the bottom of the column axis of the cell.
+     4.center -->Item will be center aligned along the column of the axis.
+9.place-self  -->Short-hand ppty for justify-self and align-self properties.Syntax: 
+ place-self: <align-self> <justify-self>
+ You can also specify one value,which will be applied to both properties.EX: place-self:center; the item will be center aligned both horizontally and vertically.
+
+The above three deal with alignment of the grid item.
+For this final set of properties,we are going to look at aligning items within a cell.
+Earlier in this course,we looked at,justify-items,align-items and place-items which apply to every item in the container,however if you want alignment for one single item ,you make use of  justify-self,align-self and place-self
+
+Lets verify this using item2.
+
+
+*/
+body{
+  margin: 0;
+}
+.container{
+  border: 6px solid black;
+  /* display ppty
+  Used to create either a block level or inline level grid container.
+  Takes values: 
+             grid
+             inline-grid
+ */
+  display: grid;
+  /* grid-template-columns-->Set number of colunms in the grid.
+        The values to specify the columns are a space separated list,where each value specifies the size
+        of respective column.
+        The values can be a non-negative leghth value like px,% etc or as a fraction of the free space avilable.
+        You can also use functcions like repeat() and minmax() to achieve the perfect grid layout.
+        grid-template-columns:100px 200px 300px;
+         This will create 3 columns which can easily be observed from the browser.
+         The grid container is still the entire width of the container however the grid items only take up 600px.
+         If you wan't to set up equal width columns then you can also specify that. I.E 200px 200px 200px
+         Sometimes you may wan't to specify equal width columns but for a greater number of columns, In that case of a scenario you can use a repeat function.
+         Instead of 200px 200px 200px, you can specify: repeat(3,200px)
+         It is also possible to set the width of the column as a fraction of the avilable free space in the container.
+         EX: grid-template-columns: 1fr 2fr 1fr;
+         If you had 100% width of grid container space then column 1 and 3 will get 25% width space each and the middle column 50% of the width space.
+         Another function that is useful with grid is the minmax() function.We can specify: repeat(3,minmax(200px,1fr))
+         This means that each of the 3 columns should be atleast 200px but can grow to take up free space if availble by 1 fraction each for the avilable free space.
+         You can verify this by trying to reduce the width of the grid container,This will shrink upto the point each column takes up 200px ,then past that the items start to overflow.
+
+  Note: This ppty also accepts align-name as part of the value ,but i've decided to leave that out as it could be confusing for a beginner.
+  */
+  /* grid-template-columns:repeat(3,minmax(200px,1fr)); */
+  /* height: 800px; */
+  /* grid-template-rows
+  Used to specify the number of rows(height) in the grid layout
+  The values can be non-negative values like px,% etc or fraction of the free availble space.
+  Functions like repeat() and minmax() can be happilly used.
+  Note:This ppty alaso allows align-name as part of the values which am going to leave out as it is not significant from a beginners perspective
+   */
+  /* grid-template-rows:repeat(3,1fr); */
+  /*Shorthand for specifying rows and colmns
+  Take the value as: <grid-template-rows>/<grid-template-columns>  */
+  grid-template:repeat(3,200px)/repeat(3,200px) ;
+  /* Set gap between columns in the grid. */
+  /* column-gap: 20px; */
+  /* set gap between rows in the grid. */
+  /* row-gap: 30px; */
+  /* Shorthand ppty for row-gap and column-gap ppties 
+  Syntax: gap:<row-gap><column-gap>
+  values can be non-negative values or a percentage*/
+  /* gap:30px 20px ; */
+  /* justify-items
+  For alignment along the row axis
+  Values can be start,end,center,stretch(default) 
+   */
+  /* justify-items: center; */
+  /* Adjust alignment along the column axis.
+  Values can be start,end,center,stretch(default)
+  */
+  /* align-items:end; */
+  /* shorthand for <align-items><justify-items>
+  Syntax: place-items:<align-items> <justify-items>.
+  This ppty can also take one value and this will be assigned to both, align-items and justify-items. E.X: place-items:center; The grid items will be both vertically and horizontally center aligned in there cells.
+  */
+  /* place-items: center; */
+  /* justify-content:space-evenly; */
+  /* align-content
+   align the content(grid log) along the column axis
+   values: 
+        start
+        end
+        center
+        space-between
+        space-around
+        space-evenly
+  */
+  /* align-content:space-evenly; */
+   /* place-content-->Short-hand for align-content and justify-content.
+syntax: place-content: <align-contnet><justify-content>
+This ppty can accept a single value, in which case,this same value is assigned to both align-content and justify-content.
+EX: If i specify, place-content:center; The grid log will both be vertically and horizontally center aligned in the grid container. */
+  /* place-content:center; */
+
+  /* For grid auto properties,the values can be in pixels,percentages,minmax,auto(default),etc */
+
+  /* grid-auto-flow
+  Controls how auto-placed items get inserted into the grid
+  Possible values: 
+        row  -->default
+        column 
+        dense, row-dense, column-dense    -->Applicable to more complex layouts,You can look at this once u've mastered the fundamentals.*/
+  /* grid-auto-flow: column; */
+  /* grid-auto-columns
+  For setting the default column width
+   */
+  /* grid-auto-columns: 60px; */
+  /* grid-auto-rows
+  For setting default row height
+  */
+  /* grid-auto-rows: 200px; */
+}
+.grid-item{
+  /* font'color */
+  color: whitesmoke;
+  font-size: 1rem;
+  padding: 0.65rem;
+  text-align: center;
+}
+.item-1{
+  background-color: #b4bf35;
+
+/* Values for,grid-column-start,grid-column-end,grid-row-start,grid-row-end, grid-column and grid-row van be a grid line number or the number of columns or rows the item has to span. */
+
+  /* grid-column-start: 1;
+  grid-column-end:span 2;
+  grid-row-start: 1;
+  grid-row-end:span 2; */
+  grid-column: 1/span 2;
+  grid-row: 1/span 2;
+}
+.item-2{
+  background-color: #b95f21;
+
+/* Item alignment
+justify-self for alignment along the row axis
+align-self for alignment along the column axis
+place-self is a shorthand for<align-self><justify-self>
+Possible values are start,end,center and stretch(default) 
+*/
+
+  /* justify-self:center;
+  align-self: center; */
+  /* Shorthand for <align-sef> <justify-self> */
+  place-self: start end;
+}
+.item-3{
+  background-color: #1c4c56;
+}
+.item-4{
+  background-color: #cfb276;
+}
+.item-5{
+  background-color: #6b0803;
+}
+.item-6{
+  background-color: #cfb276;
+}
+.item-7{
+  background-color: #b95f21;
+}
+.item-8{
+  background-color: #01243a;
+}
+.item-9{
+  background-color: #aad041;
+}
