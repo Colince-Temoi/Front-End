@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Html doc</title>
+    <link rel="stylesheet" href="bootstrap.css">
+
+
+    <style>
+        #theadid {
+            background-color: brown;
+            color: azure;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="h1">Heading</div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At non cupiditate consectetur adipisci dolor, reiciendis
+        velit laborum ut inventore vitae. Atque velit alias ad consequuntur facere ipsam voluptatibus? Cumque,
+        repudiandae!</p>
+
+    <h3>Data representaion through tables</h3>
+    <table>
+        <thead id="theadid">
+            <tr>
+                <th>Si.No</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publication</th>
+                <th>Pub_date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>978-0316767716</td>
+                <td>The Lord of the Rings</td>
+                <td>J.R.R. Tolkien</td>
+                <td>Houghton Mifflin Harcourt</td>
+                <td>1954-10-29</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>978-0385477512</td>
+                <td>The Hitchhiker's Guide to the Galaxy</td>
+                <td>Douglas Adams</td>
+                <td>Pan Books</td>
+                <td>1979-10-12</td>
+            </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <table>
+        <thead>
+            <th>Emp_id</th>
+            <th>Name</th>
+            <th>Dept.</th>
+            <th>Hire_Date</th>
+            <th>Salary</th>
+            <th>
+                <table>
+                    <tr>Work For</tr>
+                    <tr>
+                        <td>CSM tech Africa</td>
+                        <td>CSM tech America</td>
+                    </tr>
+                </table>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Colince</td>
+                <td>L&K</td>
+                <td rowspan="5">3/10/2023</td>
+                <td>1000</td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Vincent</td>
+                <td>L&K</td>
+                <!-- <td>3/10/2023</td> -->
+                <td>1000</td>
+                <td>Csm Tech Africa</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Rose</td>
+                <td>L&K</td>
+                <!-- <td>3/10/2023</td> -->
+                <td>1000</td>
+                <td>Csm Tech Africa</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Marvin</td>
+                <td>L&K</td>
+                <!-- <td>3/10/2023</td> -->
+                <td>1000</td>
+                <td>Csm Tech Africa</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>David</td>
+                <td>L&K</td>
+                <!-- <td>3/10/2023</td> -->
+                <td>1000</td>
+                <td>Csm Tech Africa</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+    <table>
+        <thead>
+            <th colspan="6">Time table</th>
+        </thead>
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="6">Hours</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thur</th>
+                <th>Fri</th>
+            </tr>
+            <tr>
+                <td>Scie</td>
+                <td>Math</td>
+                <td>Scie</td>
+                <td>Math</td>
+                <td>Arts</td>
+            </tr>
+            <tr>
+                <td>Scie</td>
+                <td>Math</td>
+                <td>Scie</td>
+                <td>Math</td>
+                <td>Arts</td>
+            </tr>
+            <th colspan="5">Lunch</th>
+            <tr>
+                <td>Scie</td>
+                <td>Math</td>
+                <td>Scie</td>
+                <td>Math</td>
+                <td>Arts</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

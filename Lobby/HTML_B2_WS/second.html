@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second demo</title>
+</head>
+<body>
+    <p>Block and inline</p>
+    <div>
+
+    </div>
+
+    <span>
+
+    </span>
+
+    <h2>User Form and Inputs</h2>
+    <!-- enctype attribute is Mandatory if you have any input as file type. -->
+    <form action="" enctype="multipart/form-data">
+        <div>
+         <label for="">Name</label>
+         <input type="text" name="name" id="nameId" readonly value="Colince">
+        </div>
+
+        <div>
+            <label for="">Age</label>
+            <input type="number" name="age" id="ageid">
+        </div>
+
+        <div>
+            <label for="">Dob</label>
+            <input type="date" name="dob" id="dobid">
+        </div>
+
+        <div>
+            <label for="">Email</label>
+            <input type="email" name="email" id="emailid">
+        </div>
+
+        <div>
+            <label for="">Password</label>
+            <input type="password" name="pwd" id="pwdid">
+        </div>
+
+        <div>
+            <label for="">address proof</label>
+            <input type="file" name="addproof" id="addproofid">
+        </div>
+
+        <!-- Do not use input type hidden for hidding your secrets; because it can still be viewed by inspecting -->
+        <div>
+            <label for="">Hide it</label>
+            <input type="hidden" name="hide" id="hideid">
+        </div>
+<!-- name must be same for the radio buttons to be in a radio group -->
+        <div>
+            <label for="">Gender</label>
+            <input type="radio" name="gen" id="genid" value="M">Male</input>
+            <input type="radio" name="gen" id="genid" value="F">Female</input>
+        </div>
+
+<div>
+    <label for="">Area of Interest</label>
+    <input type="checkbox" name="art" id="artid" value="art">Art</input>
+    <input type="checkbox" name="business" id="businessid" value="business">Business</input>
+    <input type="checkbox" name="art" id="artid" value="art">Art</input>
+    <input type="checkbox" name="business" id="businessid" value="business">Business</input>
+</div>
+
+<div>
+    <label for="">Country</label>
+    <Select>
+        <option value="0">---Select---</option>
+        <option value="Ken">Kenya</option>
+        <option value="Ind">India</option>
+        <option value="us">USA</option>
+    </Select>
+</div>
+
+<div>
+    <label for="">Feedback</label>
+    <textarea name="text" id="textid" cols="30" rows="3"></textarea>
+</div>
+
+    </form>
+
+
+
+</body>
+</html>

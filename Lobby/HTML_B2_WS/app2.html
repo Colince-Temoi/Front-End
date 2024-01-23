@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/style4.css"> -->
+    <script src="https://kit.fontawesome.com/c4fd952f80.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        /* * {
+            margin: 0;
+        } */
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .box {
+            /* border: 1px solid red; */
+            width: 100px;
+            height: 100px;
+
+            /* background-color: rgb(176, 162, 162); */
+            /* display: inline-block; */
+
+        }
+
+        .box1 {
+            border: 2px solid grey;
+            background-color: rgb(63, 47, 47);
+            text-align: right;
+            /* height: 5vh; */
+        }
+
+        ul li {
+            list-style: none;
+            display: inline;
+            margin: 5px 10px;
+            padding: 5px 10px;
+        }
+
+        ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        #logo_id {
+            float: left;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- The ul here is to build some left menu kind of thing
+    - You can also decide to float it to the right too -->
+    <div class="box1">
+
+
+        <!-- Navbar -->
+
+        <ul>
+            <a href="#" id="logo_id"><i class="fa-regular fa-font-awesome fa-2xl" style="color: #ffffff;"></i></a>
+            <li><a href="#"><i class="fa-solid fa-address-card fa-fade fa-lg"></i> &nbsp; About</a></li>
+            <li><a href="#"><i class="fa-solid fa-file"></i>&nbsp;File</a></li>
+            <li><a href="#"><i class="fa-solid fa-eye"></i>&nbsp;View</a></li>
+            <li><a href="#"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #ffffff;"></i>&nbsp;Edit</a></li>
+            <li><a href="#">Help&nbsp;<i class="fa-solid fa-question fa-lg" style="color: #ffffff;"></i></a></li>
+        </ul>
+
+    </div>
+
+    <!-- Headings||headers -->
+
+    <div class="container m-2">
+
+        <div class="display-4 text-success bg-secondary">Headings||headers and dis[play classes</div>
+
+
+        <!-- In medium devices text is aligned to left while i large devices right, 
+        -You can add one for small devices to achive the required responsive behavior
+     -->
+        <div class="h1 text-lg-right text-md-left border border-danger rounded-lg mt-2">Heading1</div>
+        <div class="display-4 text-uppercase">Heading</div>
+        <div class="display-4 text-success bg-secondary">Heading</div>
+
+        <h1 class="d-inline">Heading1 &nbsp;</h1>
+        <h1 class="d-inline">Heading2 &nbsp;</h1>
+        <h1 class="d-inline">Heading3</h1>
+
+        <!-- Display classes in action -->
+        <a href="#" class="d-block">Link-1</a>
+        <a href="#" class="d-block">Link-2</a>
+        <a href="#" class="d-block">Link-3</a>
+    </div>
+
+
+    <hr>
+
+    <!-- Box model
+    - Controlling the width property using bootstrap
+    -->
+    <div class="container">
+        <div class="display-4  bg-secondary m-2">Box model: Height and Width properties</div>
+        <div class="bg-success w-25">25</div>
+        <div class="bg-danger w-50">50</div>
+        <div class="bg-primary w-75">75</div>
+        <div class="bg-warning w-100">75</div>
+    </div>
+
+    <!-- Box model
+    - Controlling the height property using bootstrap
+    -->
+    <div class="container mt-2 border border-danger" style="width: 850px; height: 600px;">
+        <div class="bg-success w-25 h-25 d-inline-block">25</div>
+        <div class="bg-danger w-25 h-50 d-inline-block">25</div>
+        <div class="bg-primary w-25 h-75 d-inline-block">25</div>
+    </div>
+
+    <hr>
+    <!-- Boxes -->
+
+    <div class="container mt-2 mb-2">
+        <!-- Some boxes I am creating -->
+        <div class="display-4 text-uppercase bg-secondary m-2">Boxes</div>
+
+        <div class="box d-inline-block bg-dark text-white border border-danger p-1">
+            <h2>H 2</h2>
+            <p>Lorem ipsum dolor sit amet
+            </p>
+        </div>
+
+        <div class="box d-inline-block bg-dark text-white border border-danger p-1">
+            <h2>H 3</h2>
+            <p>Lorem ipsum dolor sit amet
+            </p>
+        </div>
+
+        <div class="box d-inline-block bg-dark text-white border border-danger p-1">
+            <h2>H 4</h2>
+            <p>Lorem ipsum dolor sit amet
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <!-- Buttons -->
+    <div class="container">
+        <div class="display-4 text-uppercase bg-secondary m-2">Buttons</div>
+
+        <div class="">
+            <button class="btn btn-success">Save</button>
+            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-warning">Update</button>
+            <button class="btn btn-outline-success">Hello</button>
+        </div>
+
+        <div class="btn btn-primary btn-block mt-2 mb-2">Large button</div>
+        <!-- Button groups -->
+        <div class="btn-group">
+            <button class="btn btn-success">Save</button>
+            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-warning">Update</button>
+            <button class="btn btn-outline-success">Hello</button>
+        </div>
+
+        <div class="btn-group-vertical mt-2">
+            <button class="btn btn-success">Save</button>
+            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-info">Update</button>
+            <button class="btn btn-outline-success">Hello</button>
+        </div>
+
+        <!-- Button link -->
+        <div>
+            <button class="btn btn-link btn-secondary text-white">Link</button>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- Card
+    - nside it we can put our content: Maybe a form, or something, ...
+    - Has 2 things: Card heading and card body
+    - Checkout how to impl||create card tabs||card tab sequence.
+    -->
+
+
+    <div class="container">
+        <div class="display-4 text-uppercase bg-secondary m-2">Cards</div>
+
+        <div class="card mt-2">
+            <div class="card-header">Card heading</div>
+            <div class="card-body font-weight-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                similique
+                consequatur a
+                nisi harum assumenda
+                veniam odio saepe tenetur facilis nostrum fugit, vel ullam maiores neque temporibus atque eius sint
+                officiis
+                quibusdam accusamus et. Tenetur, ullam ex quidem vero voluptatem veritatis accusantium obcaecati optio
+                maxime nisi inventore nesciunt reiciendis beatae. Tempore magni numquam corporis corrupti quia enim
+                facilis
+                sint nemo rerum, pariatur totam? Doloribus quisquam neque perspiciatis qui hic! Commodi porro animi
+                laborum
+                vitae dolor expedita numquam quis nulla quaerat! Optio neque impedit dignissimos facere magni enim
+                officiis
+                cumque ratione, tempore quia et? Ipsam ex exercitationem tempora commodi? Molestiae, veniam.
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header">Card heading</div>
+            <div class="card-body font-weight-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                similique
+                consequatur a
+                nisi harum assumenda
+                veniam odio saepe tenetur facilis nostrum fugit, vel ullam maiores neque temporibus atque eius sint
+                officiis
+                quibusdam accusamus et. Tenetur, ullam ex quidem vero voluptatem veritatis accusantium obcaecati optio
+                maxime nisi inventore nesciunt reiciendis beatae. Tempore magni numquam corporis corrupti quia enim
+                facilis
+                sint nemo rerum, pariatur totam? Doloribus quisquam neque perspiciatis qui hic! Commodi porro animi
+                laborum
+                vitae dolor expedita numquam quis nulla quaerat! Optio neque impedit dignissimos facere magni enim
+                officiis
+                cumque ratione, tempore quia et? Ipsam ex exercitationem tempora commodi? Molestiae, veniam.
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Form  -->
+    <div class="container mt-4">
+        <div class="card">
+            <!-- Card header -->
+            <!-- <div class="card-header h3 bg-secondary"> -->
+            <div class="card-header h3 bg-primary text-white">
+                Registartion form
+            </div>
+
+            <!-- Registration form -->
+            <div class="container mt-2">
+                <!-- Make sure to include the attribut: enctype="multipart/form-data when in your form you are uploading some file kind of things -->
+                <form action="" enctype="multipart/form-data">
+                    <!-- The form elements I want to put side by side to utilize the area efficiently
+                    - Each row can hold a max of 12 units
+                    - lg means: for large devices, thus it can adjust accordingly. If you remove the lg then you will not the difference. This is what is the responsive behavior classes. Others are: sm,xl, etc..check them out
+                 -->
+                    <div class="row">
+
+                        <div class="col-lg-4 form-group">
+                            <label for="nameid" class="text-primary">Name</label>
+                            <input class="form-control" type="text" name="name" id="nameid">
+                        </div>
+
+
+                        <div class="col-lg-4 form-group">
+                            <label for="emailid" class="text-primary">Email</label>
+                            <input class="form-control" type="email" name="email" id="emailid">
+                        </div>
+
+
+                        <div class="col-lg-2 form-group">
+                            <label for="branchid" class="text-primary">Branch</label>
+                            <select class="form-control" name="branch" id="branchid">
+                                <option value="0">-Select-</option>
+                                <option value="CSE">Computer Science</option>
+                                <option value="EE">Electrical Engineering</option>
+                                <option value="MI">Mechanical Engineering</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-lg-2 form-group">
+                            <label for="yearid" class="text-primary">Year</label>
+                            <select class="form-control" name="year" id="yearid">
+                                <option value="0">-Select-</option>
+                                <option value="1">First</option>
+                                <option value="2">Second</option>
+                                <option value="3">Third</option>
+                                <option value="4">Fourth</option>
+                            </select>
+                        </div>
+
+                        <!-- Once the 12 units complete and you keep adding more element, then it will automatically go to the next row -->
+
+                        <div class="col-lg-2 form-group">
+                            <label for="stypeid" class="text-primary">Type</label>
+                            <!-- For radio button make sure they go inside  div -->
+                            <div>
+                                <input type="radio" name="stype" id="stypeid" value="jab">&nbsp; JAB
+                                <input type="radio" name="stype" id="stypeid" value="Parrallel">&nbsp;Parra
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 form-group">
+                            <label for="daoid" class="text-primary">Date of Admission</label>
+                            <input class="form-control" type="date" name="dao" id="daoid">
+                        </div>
+
+                        <div class="col-lg-3 form-group">
+                            <label for="idid" class="text-primary">Upload Id</label>
+                            <input class="form-control" type="file" name="id" id="idid">
+                        </div>
+
+                        <div class="col-lg-4 form-group">
+                            <label for="iaid" class="text-primary">Intrest Area</label>
+                            <!-- For checbox button make sure they go inside  div -->
+                            <div>
+                                <input type="checkbox" name="stype" id="aid" value="art">&nbsp; Art
+                                <input type="checkbox" name="stype" id="sid" value="scie">&nbsp; Science
+                                <input type="checkbox" name="stype" id="spid" value="sports">&nbsp;Sports
+                                <input type="checkbox" name="stype" id="gid" value="gaming">&nbsp;Gaming
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 form-group">
+                            <label for="addid" class="text-primary">Address</label>
+                            <textarea class="form-control" name="addid" id="addid" cols="30" rows="2"></textarea>
+                        </div>
+                        <!-- Since the row is not yet complete, and we need to add a submit button at the end of this form, I suggest you move out of this row -->
+
+                    </div>
+                    <!-- my-2: means margin in the y axis=> Margin top and margin bottom it is -->
+                    <div class="text-center my-2">
+                        <!-- <div class="btn-group"> -->
+                        <button class="btn btn-success">submit</button>
+                        <button class="btn btn-warning">Reset</button>
+                        <button class="btn btn-success">Info</button>
+                        <!-- </div> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstarp grid
+- This we have seen in action in the form above.
+- Useful for aligning things properly and easily unlike the normal css way.
+ -->
+</body>
+
+</html>

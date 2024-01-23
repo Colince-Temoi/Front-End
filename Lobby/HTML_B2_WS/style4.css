@@ -1,0 +1,43 @@
+* {
+    /* Means padding will be include in width calculation else it
+    will always by default for width calculation be; width + padding */
+    box-sizing: border-box;
+}
+
+.box1{
+    border: 1px solid gray;
+    width: 100px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: blanchedalmond;
+}
+
+ul li {
+    padding: 4px;
+    list-style: none;
+    border: 1px solid darkgray;
+}
+
+ul{
+    padding: 2px;
+}
+
+
+
+li:last-child{
+    border: none;
+}
+
+.box{
+border: 1px solid red;
+width: 100px;
+display: inline-block;
+background-color: aliceblue;
+}
