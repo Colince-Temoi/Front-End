@@ -124,8 +124,6 @@ let result2 =combine1(1,2,RESULT_TYPES.AS_NUMBER);
 console.log(result2);
 
 
-
-
 // An object that sums up everything
 let personx:{
   name:string;
