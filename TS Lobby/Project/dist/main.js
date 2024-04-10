@@ -15,6 +15,30 @@ function autobind(target, methodName, descriptor) {
     };
     return newDescriptor;
 }
+class ProjectState {
+    constructor() {
+        this.projects = [];
+        this.listeners = [];
+    }
+    static getInstnce() {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new ProjectState();
+        return this.instance;
+    }
+    addListener(Listener) {
+        this.listeners.push(Listener);
+    }
+    addProject(title, description, people) {
+        const project = new Project(Math.random().toString(), title, description, people, ProjectStatus.Active);
+        this.projects.push(project);
+        for (const listenerFn of this.listeners) {
+            listenerFn(this.projects);
+        }
+    }
+}
+const projectState = ProjectState.getInstnce();
 function validate(validatbleInput) {
     var _a, _b, _c;
     let isValid = true;
@@ -67,6 +91,7 @@ class ProjectInput {
             const [title, description, people] = userInput;
             console.log(userInput);
             this.clearInput();
+            projectState.addProject(title, description, people);
         }
     }
     clearInput() {
@@ -86,7 +111,7 @@ class ProjectInput {
             value: description,
             required: true,
             minLength: 4,
-            maxLength: 10,
+            maxLength: 30,
         };
         const peopleValidator = {
             value: people,
@@ -104,4 +129,23 @@ class ProjectInput {
 __decorate([
     autobind
 ], ProjectInput.prototype, "submitHandler", null);
+class ProjectList {
+    constructor() {
+        this.assignedProjects = [];
+        projectState.addListener((projects) => {
+            this.assignedProjects = projects;
+            this.renderProjects();
+        });
+    }
+    renderProjects() {
+        const listEl = document.getElementById('project-list');
+        listEl.innerHTML = '';
+        for (const project of this.assignedProjects) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = project.title;
+            listEl.appendChild(listItem);
+        }
+    }
+}
 const projectInput = new ProjectInput();
+const projectList = new ProjectList();
