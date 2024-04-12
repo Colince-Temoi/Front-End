@@ -1,0 +1,33 @@
+#main {
+  height: 850px;
+  background-color: antiquewhite;
+}
+#footer {
+  height: 175px;
+  background-color: cadetblue;
+}
+.container {
+  padding: 10px;
+  width: 100%;
+  height: 1000px;
+  overflow: auto;
+}
+#header {
+  height: 50px;
+  background-color: azure;
+}
+
+#left-side-bar {
+  width: 30%;
+  border: 1px solid black;
+  float: left;
+  height: 850px;
+  background-color: cornflowerblue;
+}
+#content {
+  width: 70%;
+  border: 1px solid black;
+  float: right;
+  height: 850px;
+  background-color: gainsboro;
+}

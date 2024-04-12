@@ -1,0 +1,10 @@
+ul {
+  color: blue;
+}
+li {
+  list-style: none;
+  border: 2px dashed;
+  padding: 2px;
+  margin: 2px;
+  width: 200px;
+}
