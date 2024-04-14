@@ -15,10 +15,18 @@ function autobind(target, methodName, descriptor) {
     };
     return newDescriptor;
 }
-class ProjectState {
+class State {
     constructor() {
-        this.projects = [];
         this.listeners = [];
+    }
+    addListener(Listener) {
+        this.listeners.push(Listener);
+    }
+}
+class ProjectState extends State {
+    constructor() {
+        super();
+        this.projects = [];
     }
     static getInstnce() {
         if (this.instance) {
@@ -27,12 +35,19 @@ class ProjectState {
         this.instance = new ProjectState();
         return this.instance;
     }
-    addListener(Listener) {
-        this.listeners.push(Listener);
-    }
     addProject(title, description, people) {
         const project = new Project(Math.random().toString(), title, description, people, ProjectStatus.Active);
         this.projects.push(project);
+        this.updateListeners();
+    }
+    moveProject(projectId, newStatus) {
+        const project = this.projects.find(proj => proj.id === projectId);
+        if (project && project.status !== newStatus) {
+            project.status = newStatus;
+            this.updateListeners();
+        }
+    }
+    updateListeners() {
         for (const listenerFn of this.listeners) {
             listenerFn(this.projects);
         }
@@ -130,22 +145,97 @@ __decorate([
     autobind
 ], ProjectInput.prototype, "submitHandler", null);
 class ProjectList {
-    constructor() {
+    constructor(type) {
+        this.type = type;
         this.assignedProjects = [];
+        this.UlElement = document.getElementById(`${this.type}-project-list`);
         projectState.addListener((projects) => {
-            this.assignedProjects = projects;
+            const releventProjects = projects.filter(project => {
+                if (this.type === 'active') {
+                    return project.status === ProjectStatus.Active;
+                }
+                return project.status === ProjectStatus.Finished;
+            });
+            this.assignedProjects = releventProjects;
             this.renderProjects();
         });
+        this.configure();
+    }
+    configure() {
+        this.UlElement.addEventListener(`dragover`, this.dragOverHandler);
+        this.UlElement.addEventListener(`dragleave`, this.dragLeaveHandler);
+        this.UlElement.addEventListener(`drop`, this.dropHandler);
+    }
+    dragOverHandler(event) {
+        event.preventDefault();
+        this.UlElement.classList.add(`droppable`);
+    }
+    dragLeaveHandler(event) {
+        this.UlElement.classList.remove('droppable');
+    }
+    dropHandler(event) {
+        if (event.dataTransfer && event.dataTransfer.types[0] === 'text/plain') {
+            let projectId = event.dataTransfer.getData('text/plain');
+            projectState.moveProject(projectId, this.type === `active` ? ProjectStatus.Active : ProjectStatus.Finished);
+        }
+        this.UlElement.classList.remove('droppable');
     }
     renderProjects() {
-        const listEl = document.getElementById('project-list');
-        listEl.innerHTML = '';
+        this.UlElement.innerHTML = '';
         for (const project of this.assignedProjects) {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = project.title;
-            listEl.appendChild(listItem);
+            new projectItem(project, this.UlElement);
         }
     }
 }
+__decorate([
+    autobind
+], ProjectList.prototype, "dragOverHandler", null);
+__decorate([
+    autobind
+], ProjectList.prototype, "dragLeaveHandler", null);
+__decorate([
+    autobind
+], ProjectList.prototype, "dropHandler", null);
+class projectItem {
+    constructor(project, element) {
+        this.project = project;
+        this.element = element;
+        this.liElement = document.createElement('li');
+        this.liElement.setAttribute('draggable', 'true');
+        this.renderContent();
+        this.configure();
+    }
+    configure() {
+        this.liElement.addEventListener(`dragstart`, this.dragStartHandler);
+        this.liElement.addEventListener(`dragend`, this.dragEndHandler);
+    }
+    dragStartHandler(event) {
+        var _a;
+        (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData(`text/plain`, this.project.id);
+        event.dataTransfer.effectAllowed = 'move';
+        console.log('Drag start');
+    }
+    dragEndHandler(event) {
+        console.log('Drag end');
+    }
+    get person() {
+        if (this.project.people === 1) {
+            return "1 Person";
+        }
+        return `${this.project.people} Persons`;
+    }
+    renderContent() {
+        const liData = `<h3>${this.project.title}</h3>
+    <div><strong>${this.person} assigned</strong></div>
+    <div>${this.project.description}</div>
+    `;
+        this.liElement.innerHTML = liData;
+        this.element.appendChild(this.liElement);
+    }
+}
+__decorate([
+    autobind
+], projectItem.prototype, "dragStartHandler", null);
 const projectInput = new ProjectInput();
-const projectList = new ProjectList();
+const activeprojectList = new ProjectList('active');
+const finishedprojectList = new ProjectList('finished');
