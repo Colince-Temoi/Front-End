@@ -1,37 +1,26 @@
 import { Component } from '@angular/core';
 import { Employee } from '../employee';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrl: './employee-list.component.css'
+  styleUrl: './employee-list.component.css',
+  providers:[UserDataService]
 })
 export class EmployeeListComponent {
 
-  employees: Employee[] = [
-    { id: 1, name: "John Doe", gender: "Male", salary: 50000 },
-    { id: 2, name: "Jane Smith", gender: "Female", salary: 60000 },
-    { id: 3, name: "Michael Johnson", gender: "Male", salary: 55000 },
-    { id: 4, name: "Emily Davis", gender: "Female", salary: 65000 },
-    { id: 5, name: "Robert Brown", gender: "Male", salary: 70000 },
-    { id: 6, name: "Sarah Lee", gender: "Female", salary: 62000 },
-    { id: 7, name: "David Williams", gender: "Male", salary: 58000 },
-    { id: 8, name: "Amanda Taylor", gender: "Female", salary: 67000 },
-    { id: 9, name: "Daniel Martinez", gender: "Male", salary: 72000 },
-    { id: 10, name: "Jessica Anderson", gender: "Female", salary: 63000 },
-    { id: 11, name: "Matthew Wilson", gender: "Male", salary: 74000 },
-    { id: 12, name: "Stephanie Garcia", gender: "Female", salary: 69000 },
-    { id: 13, name: "Christopher Brown", gender: "Male", salary: 76000 }
-  ];
+  employees: Employee[]=[];
+  filteredEmployees: Employee[]= [];
 
-  totalCount() {
+  totalCount():number {
     return this.employees.length;
   }
-  maleCount() {
+  maleCount():number {
     return this.employees.filter(emp=>emp.gender==='Male').length
   }
 
-  femaleCount() {
+  femaleCount():number {
     return this.employees.filter(emp=>emp.gender==='Female').length
   }
 /*
@@ -42,9 +31,20 @@ Avoiding Reference Sharing: If you directly assign filteredEmployees to this.emp
 Immutable Approach: Using slice() creates an immutable copy of the array, which means the original array remains unchanged. This is a safer approach when dealing with arrays that might undergo modifications during runtime.
 Overall, using slice() ensures that the filteredEmployees array starts with the same data as employees but operates independently from it.
 */
-  constructor() {
+  constructor(private _userService:UserDataService) {
     // Initialize filteredEmployees with all employees when component is initialized
-    this.filteredEmployees = this.employees.slice();
+// Fetch users from the service
+const users = this._userService.getUsers(); // Store fetched users in a variable
+console.log('Fetched users:', users); // Log fetched users
+/*
+By using as Employee[], you're explicitly telling TypeScript that users should be treated as an array of Employee objects. This should resolve the error you're encountering. Make sure that the structure of the Employee interface matches the structure of the data returned by this._userService.getUsers().
+ */
+this.employees = users as Employee[]; // Type assertion
+this.filteredEmployees = this.employees.slice(); // Initialize filteredEmployees
+  }
+
+  ngOnInit(){
+
   }
 
 Counter = 5;
@@ -54,8 +54,6 @@ this.Counter++;
 decrement() {
 this.Counter--;
 }
-
-filteredEmployees: Employee[] = [];
 
   applyFilter(filter: string) {
     if (filter === 'all') {
