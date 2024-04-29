@@ -1,0 +1,55 @@
+<h2>Angular Pipes</h2>
+<!-- Currency pipe
+- Here 'INR' is a parameter
+-->
+{{ 200000 | currency : "INR" }}
+
+<!-- date pipe -->
+<!-- <p>Date Pipe : {{ today | date }}</p> -->
+<!-- <p>Full Date : {{ today | date : "fullDate" }}</p> -->
+<!-- <p>Mediate Date : {{ today | date : "medium" }}</p> -->
+<!-- <p>Short Date : {{ today | date : "short" }}</p> -->
+<p>Date (dd/MM/yyyy) : {{ today | date : "dd/MM/yyyy" }}</p>
+<!-- <p>Time : {{ today | date : "h:mm a z" }}</p> -->
+<!-- <p>Medium Time : {{ today | date : "mediumTime" }}</p> -->
+
+<!-- json pipe 
+- Normally you can print objects data, you have to convert them to json in order to be able to print them. Else you may get an output like: [object Object] 
+- To overcome such situations you can utilize json pipe and happilly you should be able to view  your object data
+-->
+<h4>{{ user }}</h4>
+<h4>{{ user | json }}</h4>
+
+<!-- slice pipe
+- slice is used to get a part of an array. This you know from Vanilla Js
+2 represents second index i.e., 0,1,2 for March
+12 represents 12th index -1 i.e., 11th index
+-->
+<p>{{ months | slice : 2 : 12 }}</p>
+
+<!-- percentage pipe
+- Will convert a value into percentage
+ -->
+<p>{{ 80 / 100 | percent }}</p>
+
+<!-- Decimal Pipe
+1 before the decimal point indicates minimum integer digits.
+2 after the decimal point indicates minimum and maximum fraction digits.
+-->
+<p>{{ 7778 | number : "1.2-2" }}</p>
+
+<!-- async pipe 
+- Used when we are displaying data that may delay
+-This line in the template subscribes to the stringData$ observable and displays the emitted value (the string data) when it becomes available. The async pipe handles the subscription and unsubscribes automatically, ensuring clean-up when the component is destroyed.
+-->
+<p>{{ stringData$ | async }}</p>
+
+<!-- Custom Pipes
+ We will do this using one case study to get clarity of how a we can create our own custom pipes.
+
+ - I have table displaying Employee data.
+ -I require if Gender is male append: Mr.Xyz
+ - Else display: Ms.Zxy
+
+ Preprae a custom pipe to achieve tthis now that we don't have a predefine pipe to handle this.
+-->

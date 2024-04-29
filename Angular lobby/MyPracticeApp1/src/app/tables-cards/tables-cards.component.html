@@ -1,0 +1,154 @@
+<!-- *ngFor Directive Demo
+- This is used for looping over a collection
+- The list can be displayed in anything I.e., table, cards, blocks, whatever you want
+
+- *ngFor directive has several local variables which you can utilize. i.e.:
++. index => For serial #s
++. first, last, even,odd => You can utilize this for controlling/providing different UI or bg kind of things.
++. You can check for more information with the docs about these *ngFor local variable and how you can creatively use them.
+
+ngFor trackBy
+--------------
+- Initially, you are displaying a list of list of Movies/data from the backend. This means that during rendering, the list objects, in our case the th's and td's objects are going to be created in the Dom.
+- When you update the data coming from the backend by adding more records for example, during rendering the dom objects are going to be recreated again. If you think of this in terms of thousands of records, performance issue creep in. Because assumming I only added one record in the backend, the whole rerendering is going to happen from record 1 to record n.
+- To address this issue, trackBy concept comes into play. 
+- In Angular17, @for (item of items; track item){//template content to repeat} directive does this for you automatically.
+- For lower versions, you have to write the code to do this manually. Check Bibhu's docs on how.
+-->
+<div>
+  <h2>Movies</h2>
+  <div>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <th>#</th>
+        <th>Title</th>
+        <th>Country</th>
+        <th>Director</th>
+        <th>Genre</th>
+        <th>isFirst</th>
+        <th>isLast</th>
+        <th>isEven</th>
+        <th>isOdd</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let movie of movies;
+            let i = index;
+            let isLast = last;
+            let isFirst = first;
+            let isEven = even;
+            let isOdd = odd
+          "
+        >
+          <td>
+            <strong>{{ i + 1 }}</strong>
+          </td>
+          <td>{{ movie.Title }}</td>
+          <td>{{ movie.Country }}</td>
+          <td>{{ movie.Director }}</td>
+          <td>{{ movie.Genre }}</td>
+          <td>{{ isFirst }}</td>
+          <td>{{ isLast }}</td>
+          <td>{{ isEven }}</td>
+          <td>{{ isOdd }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Displaying in cards 
+- Our first div is a row
+- Our second div is the column
+- Inside the column, we are going to display our card
+- It is the columns that we are going to loop
+-->
+<!-- <div class="row">
+  <div class="col-4" *ngFor="let movie of movies">
+    <div class="card" style="width: 18rem">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ movie.Title }}</h5>
+        <p class="card-text">
+          {{ movie.Plot }}
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ movie.Country }}</li>
+        <li class="list-group-item">{{ movie.Director }}</li>
+        <li class="list-group-item">{{ movie.Genre }}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Chat GPT rvemamped -->
+<!-- <div class="card-deck">
+  <div class="card" *ngFor="let movie of movies">
+    <img src="..." class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ movie.Title }}</h5>
+      <p class="card-text">{{ movie.Plot }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ movie.Country }}</li>
+      <li class="list-group-item">{{ movie.Director }}</li>
+      <li class="list-group-item">{{ movie.Genre }}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- more of ChatGPT things 
+- In Angular 17 instead of using *ngFor, you may use another newest implementaion i.e., @for (item of items; track item){//template content to repeat}
+-->
+<!-- <div class="row">
+  @for (movie of movies; track movie) {
+  <div class="col-md-6 mb-2">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ movie.Title }}</h5>
+        <p class="card-text">{{ movie.Plot }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ movie.Country }}</li>
+        <li class="list-group-item">{{ movie.Director }}</li>
+        <li class="list-group-item">{{ movie.Genre }}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+  }
+</div> -->
+
+<!-- Custom directives -->
+<!-- 1. Custom Attribute directive
+- This custom attribute directive you can re-use anywhere in your application.
+-->
+<div appMyCustomDirective>This div has the custom directive applied.</div>
+
+<!--2. Custom Structural directive 
+- Note: structural directives are preceeded with a *
+- Like this; the value true will be picked by the @Input decorator. 
+- Like this, simple and straight forward
+- This custom structural directive of ours is working like *ngIf
+- Stay creative!!
+-->
+<div *appMyStructuralDirective="true">
+  This content will be shown if the condition is true.
+</div>
+<div *appMyStructuralDirective="false">
+  This content will be removed if the condition is false.
+</div>

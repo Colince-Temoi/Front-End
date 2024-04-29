@@ -1,0 +1,264 @@
+<div class="tab-container">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="home-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#home-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true"
+      >
+        <strong>Tab 1</strong>
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="profile-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#profile-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="profile-tab-pane"
+        aria-selected="false"
+      >
+        <strong>Tab 2</strong>
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="contact-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#contact-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="contact-tab-pane"
+        aria-selected="false"
+      >
+        <strong>Tab 3</strong>
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="disabled-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#disabled-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="disabled-tab-pane"
+        aria-selected="false"
+        disabled
+      >
+        <strong>Tab 4</strong>
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="home-tab-pane"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+      tabindex="0"
+    >
+      ...
+    </div>
+    <div
+      class="tab-pane fade"
+      id="profile-tab-pane"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+      tabindex="0"
+    >
+      ...
+    </div>
+    <div
+      class="tab-pane fade"
+      id="contact-tab-pane"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+      tabindex="0"
+    >
+      ...
+    </div>
+    <div
+      class="tab-pane fade"
+      id="disabled-tab-pane"
+      role="tabpanel"
+      aria-labelledby="disabled-tab"
+      tabindex="0"
+    >
+      ...
+    </div>
+  </div>
+</div>
+<!-- The above 99 line I go them from Bootrstrap site
+- Now lets create our own tabs from scratch using *ngSwitch Angular Directives
+
+Lets discuss the code present in the li
+-------------------------------------------
+- On clicking a an li tab:
+  selectedTab property in Ts file is going to be updated with the respective value
+- [class.active]="selectedTab === 'tab1'" means I am going to apply the active css class defined in my component specific css based on the value of the condition on the RHS of the triple equal operator.
+- This class nothing but just changes the bg-color of that li tab.
+- Note: In angular when manipulating DOM components its all about on/off | True|false. And this is always on the RHS of the assignment or comparison operator.
+If true/on -- Apply whatver things you want to do, else do not!
+-->
+<div class="tab-container mt-3">
+  <ul class="tab-list">
+    <li (click)="selectedTab = 'tab1'" [class.active]="selectedTab === 'tab1'">
+      Tab 1
+    </li>
+    <li (click)="selectedTab = 'tab2'" [class.active]="selectedTab === 'tab2'">
+      Tab 2
+    </li>
+    <li (click)="selectedTab = 'tab3'" [class.active]="selectedTab === 'tab3'">
+      Tab 3
+    </li>
+    <li (click)="selectedTab = 'tab4'" [class.active]="selectedTab === 'tab4'">
+      Tab 4
+    </li>
+  </ul>
+
+  <!-- The below code is nothing but a switch statement kind of things 
+  - This will be used for displaying the content against a given tab
+  - 
+  -->
+  <div [ngSwitch]="selectedTab">
+    <div *ngSwitchCase="'tab1'">
+      <!-- Content for tab 1 -->
+      <p>Content for tab 1</p>
+    </div>
+    <div *ngSwitchCase="'tab2'">
+      <!-- Content for tab 1 -->
+      <p>Content for tab 2</p>
+    </div>
+    <div *ngSwitchCase="'tab3'">
+      <!-- Content for tab 1 -->
+      <p>Content for tab 3</p>
+    </div>
+    <div *ngSwitchCase="'tab4'">
+      <!-- Content for tab 1 -->
+      <p>Content for tab 4</p>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="card">
+    <!-- <div class="card-header"> -->
+    <ul class="nav nav-tabs w-100">
+      <ng-container *ngFor="let tab of tabs">
+        <li class="nav-item flex-fill">
+          <a
+            class="nav-link"
+            (click)="selectedTab = tab.key"
+            [class.active]="selectedTab === tab.key"
+            ><strong>{{ tab.label }}</strong></a
+          >
+        </li>
+      </ng-container>
+    </ul>
+    <!-- </div> -->
+    <!-- <hr class="m-0" /> -->
+    <div class="card-body">
+      <div [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="'tab1'">
+          <!-- Content for tab 1 -->
+          <p>Content for tab 1</p>
+        </div>
+        <div *ngSwitchCase="'tab2'">
+          <!-- Content for tab 2 -->
+          <p>Content for tab 2</p>
+        </div>
+        <div *ngSwitchCase="'tab3'">
+          <!-- Content for tab 3 -->
+          <p>Content for tab 3</p>
+        </div>
+        <div *ngSwitchCase="'tab4'">
+          <!-- Content for tab 4 -->
+          <p>Content for tab 4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Gpt revamped one -->
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="selectedTab = 'tab1'"
+            [class.active]="selectedTab === 'tab1'"
+            ><strong>Tab 1</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="selectedTab = 'tab2'"
+            [class.active]="selectedTab === 'tab2'"
+            ><strong>Tab 2</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="selectedTab = 'tab3'"
+            [class.active]="selectedTab === 'tab3'"
+            ><strong>Tab 3</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="selectedTab = 'tab4'"
+            [class.active]="selectedTab === 'tab4'"
+            ><strong>Tab 4</strong></a
+          >
+        </li>
+      </ul>
+    </div>
+    <hr class="m-0" />
+    <div class="card-body">
+      <div [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="'tab1'">
+          <!-- Content for tab 1 -->
+          <p>Content for tab 1</p>
+        </div>
+        <div *ngSwitchCase="'tab2'">
+          <!-- Content for tab 2 -->
+          <p>Content for tab 2</p>
+        </div>
+        <div *ngSwitchCase="'tab3'">
+          <!-- Content for tab 3 -->
+          <p>Content for tab 3</p>
+        </div>
+        <div *ngSwitchCase="'tab4'">
+          <!-- Content for tab 4 -->
+          <p>Content for tab 4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- *ngFor Directive Demo
+- This is used for looping over a collection
+- The list can be displayed in anything I.e., table, cards, blocks, whatever you want
+-->
+<div>
+  <h1>Book List</h1>
+  <ol class="list-group">
+    <li class="list-group-item" *ngFor="let book of books">{{ book }}</li>
+  </ol>
+</div>

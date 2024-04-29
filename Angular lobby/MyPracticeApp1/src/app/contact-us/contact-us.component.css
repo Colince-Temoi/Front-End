@@ -1,0 +1,17 @@
+.italic {
+  font-style: italic;
+  color: red;
+  /* Generally font size is given in rem */
+  font-size: 3.4rem;
+}
+.bold {
+  font-weight: bold;
+  color: red;
+}
+
+/* To hide and show things - we will controll this styling using in TS using some boolean things
+1. As step 1 I have this show class with display set to none.
+*/
+.show {
+  display: none;
+}

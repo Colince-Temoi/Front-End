@@ -1,0 +1,33 @@
+<!-- <h1>Welcome to {{ title }}</h1>
+<p>Parent component Counter value is: {{ counter }}</p>
+<app-child
+  [count]="counter"
+  (countChanged)="countChangedHandler($event)"
+></app-child> -->
+
+<!-- Alternative 2 - Template Reference Variable
+- Parent is not altering anything; it is just accessing.
+-->
+<!-- <h1>{{ title }}!</h1> -->
+<!-- <p>current count is {{ child.count }}</p> -->
+<!-- Increament and decreament methods are actually present in the child -->
+<!-- <button (click)="child.increment()">Increment</button>
+<button (click)="child.decrement()">decrement</button> -->
+<!-- The id here is what is actually called TemplateReference variable
+- It is referenecing your child component object
+- Meaning using this reference we can access child components data
+-->
+<!-- <app-child #child></app-child> -->
+
+<!-- Alternative 3 : @ViewChild decorator
+- Using this alternatives we can be able to acess child members in parent things.
+- Parent is not altering anything; it is just accessing.
+-->
+
+<h1>{{ title }}</h1>
+<!-- Accessing child component property of top of child reference which we have obtained in our component by leveraging @ViewChild decorator when defining a property to hold this.   -->
+
+<p>current count is {{ child.count }}</p>
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">decrement</button>
+<app-child></app-child>

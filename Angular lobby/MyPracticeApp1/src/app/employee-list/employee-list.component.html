@@ -1,0 +1,40 @@
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">decrement</button>
+<app-employee-count
+  [count]="Counter"
+  [total]="totalCount()"
+  [male]="maleCount()"
+  [female]="femaleCount()"
+  (filterClicked)="applyFilter($event)"
+></app-employee-count>
+<div>
+  <h2>Employees</h2>
+  <div>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <th>#</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Salary</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of filteredEmployees; let i = index">
+          <td>
+            <strong>{{ i + 1 }}</strong>
+          </td>
+          <td>{{ employee.id }}</td>
+          <!-- Like this we are applying a custom pipe on employee.name
+          The pipe name is genderSalutation and am passing employee.gender as an input to it.
+          -->
+          <td>{{ employee.name | genderSalutation : employee.gender }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.salary }}</td>
+        </tr>
+        <tr *ngIf="!employees || employees.length == 0">
+          <td colspan="5" class="text-center">No records found!</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

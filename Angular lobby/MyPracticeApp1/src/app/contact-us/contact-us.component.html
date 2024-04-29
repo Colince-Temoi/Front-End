@@ -1,1 +1,88 @@
-<p>contact-us works!</p>
+<!-- Class binding -->
+<p [class]="classesToApply">{{ data }}</p>
+
+<!-- Event Binding -->
+<button (click)="change()">Change</button>
+<!-- On any change in the input + enter button counter increaments -->
+<input (change)="changeMessage($event)" />
+<input (blur)="changeMessage1()" />
+<h1>{{ counter }}</h1>
+<h2>{{ message }}</h2>
+<button (click)="detectEvent($event)">Change</button>
+<input (change)="detectEvent($event)" />
+<h2>{{ message }}</h2>
+
+<hr />
+<table [border]="1" class="table table-bordered border-primary">
+  <thead>
+    <th colspan="2">Student Details</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First Name</td>
+      <td>{{ firstName }}</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>{{ lastName }}</td>
+    </tr>
+    <!-- All this rows  below lastName we will be hiding them and will only be displayed or hidden by clicking showDetails and HideDetails buttons respectively 
+    - [class.show]="showDetails" implies what?:
+       +.It is actually class binding
+      +.This class-[class.show]- show class; I want to apply to the tr based on the value showDetails placeholder is holding.
+      +. If showDetails value is true, then show class is going to apply
+      +. When the show class applies, it will false; nothing but the tr thing is going to hide.
+      Like this we also have another approach apart from this one:
+    1. [class.show]
+      - Can access style classes directly
+      - Can only access one style class at a time.
+    2. [ngClass="invokeBehavior()"]
+      - Cannot access style classes directly!
+         We have to utilize one behavior through which we will define an object with key-style class and a boolean as value.
+      - In this object we can thus define multiple k-v pair hence making us capable of accessing multiple styles at one go.
+      - Finally retunr that objectc reference.
+  = Those were the two ways in which we can controll styling dynamically!! practice using them.
+    -->
+    <tr [class.show]="showDetails">
+      <td>Branch</td>
+      <td>{{ branch }}</td>
+    </tr>
+    <tr [class.show]="showDetails">
+      <td>Mobile</td>
+      <td>{{ mobile }}</td>
+    </tr>
+    <tr [ngClass]="applyClass()">
+      <td>Gender</td>
+      <td>{{ gender }}</td>
+    </tr>
+    <tr [class.show]="showDetails">
+      <td>Age</td>
+      <td>{{ age }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button (click)="toggle()">Toggle</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- 2-way binding
+- I have created an input field and to it I have applied 2 things:
+ +. Event binding
+ +. property binding - Nothing but binding a ppty value-could be defined in a component- to an html ppty element.
+- In our component we have a text ppty with some value.
+- we are binding this ppty value to our html element value ppty.
+- Whenever our component loads; this input field will be populated with that ppty value we have defined in our component. 
+- On changing something in the input field and clicking outside of this i/p field, changeText behavior gets invoked. 
+ + This behavior is nothing but updating the value of text ppty in the component.
+ + This updated value we are able to get it in our paragrapgh below.
+-->
+<input type="text" (change)="changeText($event)" [value]="text" />
+<p>{{ text }}</p>
+
+<!-- Alternative 2 - [(ngModel)] directive
+ - Import it from FormsModule, else error.
+ - This is an equilvalent to what we have just done above in alternative 1.
+ - The effect is same.
+-->
+<input type="text" [(ngModel)]="text" />

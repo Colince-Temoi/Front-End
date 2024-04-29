@@ -1,1 +1,57 @@
-<p>services works!</p>
+<p>Structural directives hands-on!</p>
+<div *ngIf="isValid">
+  <h1>This is Valid!</h1>
+</div>
+<button (click)="toggle()">Toggle</button>
+
+<hr />
+<div>
+  <input type="radio" (click)="validate('valid')" name="rbvalid" id="" />Valid
+  <input
+    type="radio"
+    (click)="validate('invalid')"
+    name="rbvalid"
+    id=""
+  />Invalid
+</div>
+
+<!-- Alternative 1 to represent true and false using *ngIf
+- Do not write things like this.
+-->
+<!-- <div *ngIf="valid">
+  <h1>This is Valid!</h1>
+</div>
+<div *ngIf="!valid">
+  <h1>This is Invalid!</h1>
+</div> -->
+
+<!-- Alternative 2 to represent true and false using *ngIf 
+  
+  Instead of using multiple *ngIf to represent true and false
+- Utilize *ngIf dire ctive with else block.
+- Use this alternative.
+-->
+<!-- <div *ngIf="valid" ;else elseBlockId>
+  <h1>This is valid!</h1>
+</div>
+<ng-template #elseBlockId>
+  <div>
+    <h1>This is invalid</h1>
+  </div>
+</ng-template> -->
+
+<!-- Alternative 3:  If ... else ... then 
+- If you have more than one section to control! you can as well utilize this!
+-->
+<p *ngIf="valid; then block1; else block2">Check</p>
+
+<ng-template #block1>
+  <div>
+    <h1>This is valid!</h1>
+  </div>
+</ng-template>
+<ng-template #block2>
+  <div>
+    <h1>This is Invalid!</h1>
+  </div>
+</ng-template>

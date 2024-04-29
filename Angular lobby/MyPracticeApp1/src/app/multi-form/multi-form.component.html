@@ -1,0 +1,183 @@
+<div [ngSwitch]="currentStep">
+  <div *ngSwitchCase="1">
+    <div class="container mt-4">
+      <div class="card h-25">
+        <!-- Card header -->
+        <!-- <div class="card-header h3 bg-secondary"> -->
+        <div class="card-header h3 bg-primary text-white">
+          <h2>Step 1: Personal Information</h2>
+        </div>
+        <!-- Step 1 personal Information fields form -->
+        <div class="container mt-2">
+          <form>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <label for="firstNameid" class="text-secondary"
+                  ><strong>First Name</strong></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="firstName"
+                  id="firstNameid"
+                />
+              </div>
+              <div class="col-md-4 mb-4">
+                <label for="lastNameid" class="text-secondary">
+                  <strong>Last Name</strong></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="lastName"
+                  id="lastNameid"
+                />
+              </div>
+            </div>
+            <div
+              class="text-center my-2 btn-group"
+              [style]="{
+                display: 'flex',
+                'justify-content': 'center',
+                'margin-left': '40%',
+                'margin-right': '40%'
+              }"
+            >
+              <!-- Will update the currentStep value ++1 
+              - *ngSwith will switch to the second form and form1 will be removed from the DOM automatically
+              -->
+              <button class="btn btn-outline-success" (click)="nextStep()">
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="2">
+    <div class="container mt-4">
+      <div class="card h-25">
+        <!-- Card header -->
+        <!-- <div class="card-header h3 bg-secondary"> -->
+        <div class="card-header h3 bg-primary text-white">
+          <h2>Step 2: Contact Details</h2>
+        </div>
+        <!-- Step 2 Contact Details fields -->
+        <div class="container mt-2">
+          <form>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <label for="emailid" class="text-secondary">
+                  <strong>Email</strong>
+                </label>
+                <input
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  id="emailid"
+                />
+              </div>
+              <div class="col-md-4 mb-4">
+                <label for="phoneid" class="text-secondary"
+                  ><strong>Phone</strong></label
+                >
+                <input
+                  class="form-control"
+                  type="tel"
+                  name="phone"
+                  id="phoneid"
+                />
+              </div>
+              <div class="col-md-4 mb-4"></div>
+            </div>
+            <div
+              class="text-center my-2 btn-group"
+              [style]="{
+                display: 'flex',
+                'justify-content': 'center',
+                'margin-left': '25%',
+                'margin-right': '25%'
+              }"
+            >
+              <!-- Will update the currentStep value to --1 
+              - *ngSwith will switch to the previous form and current form will be removed from the DOM automatically
+              -->
+              <button class="btn btn-outline-info" (click)="prevStep()">
+                Previous
+              </button>
+              <button class="btn btn-outline-success" (click)="nextStep()">
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="3">
+    <div class="container mt-4">
+      <div class="card h-25">
+        <!-- Card header -->
+        <!-- <div class="card-header h3 bg-secondary"> -->
+        <div class="card-header h3 bg-primary text-white">
+          <h2>Step 3: Address Details</h2>
+        </div>
+        <!-- Step 3 Address Details fields form -->
+        <div class="container mt-2">
+          <form>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <label for="addressid" class="text-secondary">
+                  <strong>Address</strong>
+                </label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="address"
+                  id="addressid"
+                />
+              </div>
+              <div class="col-md-4 mb-4">
+                <label for="cityid" class="text-secondary"
+                  ><strong>City</strong></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="city"
+                  id="cityid"
+                />
+              </div>
+              <div class="col-md-4 mb-4">
+                <label for="countryid" class="text-secondary"
+                  ><strong>country</strong></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="country"
+                  id="countryid"
+                />
+              </div>
+            </div>
+            <div
+              class="text-center my-2 btn-group"
+              [style]="{
+                display: 'flex',
+                'justify-content': 'center',
+                'margin-left': '25%',
+                'margin-right': '25%'
+              }"
+            >
+              <button class="btn btn-outline-info" (click)="prevStep()">
+                Previous
+              </button>
+              <button class="btn btn-success" (click)="submit()">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

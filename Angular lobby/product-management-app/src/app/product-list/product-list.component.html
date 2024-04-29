@@ -1,0 +1,66 @@
+<h1>Product Lists</h1>
+<hr
+  style="
+    height: 2px;
+    border-width: 0;
+    color: rgb(73, 79, 89);
+    background-color: rgb(89, 81, 81);
+  "
+/>
+<table class="table table-striped">
+  <thead>
+    <th>#.</th>
+    <th>title</th>
+    <th>description</th>
+    <th>price</th>
+    <th>discountPercentage</th>
+    <th>rating</th>
+    <th>stock</th>
+    <th>brand</th>
+    <th>category</th>
+    <th>thumbnail</th>
+    <th>Images</th>
+    <th>Action</th>
+  </thead>
+  <tbody *ngFor="let product of products">
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.title }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.discountPercentage }}</td>
+      <td>{{ product.rating }}</td>
+      <td>{{ product.stock }}</td>
+      <td>{{ product.brand }}</td>
+      <td>{{ product.category }}</td>
+      <td><img src="{{ product.thumbnail }}" alt="" /></td>
+      <!-- Alternative A -->
+      <div id="images">
+        <div *ngFor="let image of product.images">
+          <img src="{{ image }}" alt="##" srcset="" />
+        </div>
+      </div>
+      <!-- Alternative B -->
+      <!-- <td>
+        <ng-container *ngFor="let image of product.images">
+          <img src="{{ image }}" alt="##" srcset="" />
+        </ng-container>
+      </td> -->
+      <td>
+        <!-- Button groups -->
+        <div class="btn-group">
+          <button class="btn" title="edit">
+            <i class="fa fa-pencil text-info"></i>Edit
+          </button>
+          <button
+            class="btn"
+            title="delete"
+            (click)="deleteProductById(product.id)"
+          >
+            <i class="fa fa-trash text-danger"></i>Delete
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

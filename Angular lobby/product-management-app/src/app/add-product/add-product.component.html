@@ -1,0 +1,128 @@
+<div class="container mt-4" style="width: 70%">
+  <div class="card">
+    <!-- Card header -->
+    <div class="card-header h3 bg-body-secondary text-black">
+      Add Product form
+    </div>
+    <!-- <div class="row justify-content-center"> -->
+    <div class="container mt-2">
+      <form>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <label for="productId">ID</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productId"
+              name="productId"
+              [(ngModel)]="product.id"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productTitle">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productTitle"
+              name="productTitle"
+              [(ngModel)]="product.title"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productPrice">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productPrice"
+              name="productPrice"
+              [(ngModel)]="product.price"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productDiscount">Discount Percentage</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productDiscount"
+              name="productDiscount"
+              [(ngModel)]="product.discountPercentage"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productRating">Rating</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productRating"
+              name="productRating"
+              [(ngModel)]="product.rating"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productStock">Stock</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productStock"
+              name="productStock"
+              [(ngModel)]="product.stock"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productBrand">Brand</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productBrand"
+              name="productBrand"
+              [(ngModel)]="product.brand"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productCategory">Category</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productCategory"
+              name="productCategory"
+              [(ngModel)]="product.category"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productThumbnail">Thumbnail</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productThumbnail"
+              name="productThumbnail"
+              [(ngModel)]="product.thumbnail"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="productImages">Images</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productImages"
+              name="productImages"
+              [(ngModel)]="product.images"
+            />
+          </div>
+          <div class="col-md-8 mb-8">
+            <label for="productDescription">Description</label>
+            <textarea
+              class="form-control"
+              id="productDescription"
+              name="productDescription"
+              [(ngModel)]="product.description"
+            ></textarea>
+          </div>
+        </div>
+        <button type="button" (click)="addProduct()" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

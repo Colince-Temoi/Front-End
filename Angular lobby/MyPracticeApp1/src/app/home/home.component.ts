@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  apply:boolean=true;
+  isDisabled:boolean=false;
+  salary=5000;
+  className='myColor';
+  className1='text-primary';
+  colspan=2;
 
+ 
+  show() {
+    return "Method executing";
+  }
 }

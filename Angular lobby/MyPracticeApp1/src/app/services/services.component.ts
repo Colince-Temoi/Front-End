@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './services.component.css'
 })
 export class ServicesComponent {
+  isValid:boolean=true;
 
+  toggle() {
+    this.isValid=!this.isValid;
+  }
+
+  valid!: boolean;
+  validate(arg0: string) {
+    if (arg0 ==='valid') {
+      this.valid=true;
+    }else{
+    this.valid=false;
+    }
+  }
 }

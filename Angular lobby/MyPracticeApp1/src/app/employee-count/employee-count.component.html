@@ -1,0 +1,154 @@
+<div class="card w-80 mb-3">
+  <div class="card-body">
+    <h2>Child Component</h2>
+    current count is {{ count }}
+    <h5 class="card-title text-center mb-3"><strong>Summery</strong></h5>
+    <div class="row">
+      <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="bg-dark text-white box border border-secondary p-1">
+                  <h5 class="card-title text-center">All</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-dark text-white box border border-secondary p-1">
+                  <h5 class="card-title text-center">{{ all }}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6 mt-1 mx-auto">
+                <div class="text-dark box p-1">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info card-title text-center"
+                    (click)="onFilterClicked('all')"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="bg-dark text-white box border border-secondary p-1">
+                  <h5 class="card-title text-center">Males</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-dark text-white box border border-secondary p-1">
+                  <h5 class="card-title text-center">{{ male }}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6 mt-1 mx-auto">
+                <div class="text-dark box p-1">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info card-title text-center"
+                    (click)="onFilterClicked('male')"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="bg-dark text-white border border-secondary p-1">
+                  <h5 class="card-title text-center">Females</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="bg-dark text-white border border-secondary p-1">
+                  <h5 class="card-title text-center">{{ female }}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6 mt-1 mx-auto">
+                <div class="text-dark box p-1">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info card-title text-center"
+                    (click)="onFilterClicked('female')"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The below card is so nice -->
+
+<!-- <div class="card w-80 mb-3">
+  <div class="card-body">
+    <h5 class="card-title text-center mb-3"><strong>Statistics</strong></h5>
+    <div class="row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
