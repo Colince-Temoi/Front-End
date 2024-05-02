@@ -49,8 +49,36 @@
       <td>
         <!-- Button groups -->
         <div class="btn-group">
-          <button class="btn" title="edit">
+          <!-- <button class="btn" title="edit" (click)="editProduct(product.id)">
             <i class="fa fa-pencil text-info"></i>Edit
+          </button> -->
+          <button
+            class="btn"
+            title="edit"
+            [routerLink]="['/product-edit', product.id]"
+          >
+            <i class="fa fa-pencil text-info"></i>Edit
+          </button>
+          <!-- <button
+            class="btn"
+            title="edit2"
+            [routerLink]="['/product-list/product-edit', product.id]"
+          >
+            <i class="fa fa-pencil text-info"></i>Edit2
+          </button> -->
+          <!-- <button
+            class="btn"
+            title="view"
+            [routerLink]="['/product-list/product-details', product.id]"
+          >
+            <i class="fa fa-eye text-info"></i>View
+          </button> -->
+          <button
+            class="btn"
+            title="view"
+            [routerLink]="['/product-details', product.id]"
+          >
+            <i class="fa fa-eye text-info"></i>View
           </button>
           <button
             class="btn"
@@ -64,3 +92,6 @@
     </tr>
   </tbody>
 </table>
+
+<!-- We are projecting product-details component template here after the table -->
+<router-outlet></router-outlet>

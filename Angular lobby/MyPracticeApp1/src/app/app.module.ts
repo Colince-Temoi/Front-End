@@ -20,6 +20,7 @@ import { ChildComponent } from './child/child.component';
 import { PipesLobbyComponent } from './pipes-lobby/pipes-lobby.component';
 import { GenderSalutationPipe } from './gender-salutation.pipe';
 import { UserListComponent } from './user-list/user-list.component';
+import {HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserListComponent } from './user-list/user-list.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

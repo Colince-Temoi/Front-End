@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserDataService } from '../user-data.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-user-list',
@@ -24,16 +25,30 @@ export class UserListComponent {
   //   { id: 13, name: "Christopher Brown", gender: "Male", salary: 76000 }
   // ];
 
-  // Injecting UserDataService to _userService
-  
-  users:{}[]=[];
 
+  // This is working
+  users:{}[]=[];
+  // This is also working. But don't use such kind of thing
+  // users:any;
+  // This is not working
+  // users:User[]=[];
+
+    // Injecting UserDataService to _userService
   constructor(private _userService: UserDataService){
 
   }
 // Invoked automatically just after the constructor
   ngOnInit(){
-    this.users=this._userService.getUsers();
+    this._userService.getUsers().subscribe((data)=>{
+      // This is working
+          this.users=data;
+          // This is also working
+          // this.users={...data};
+          
+          console.log(this.users);
+        });
+        // console.log(this.users);
+    // this.users=this._userService.getUsers();
   }
   
 }

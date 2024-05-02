@@ -39,7 +39,7 @@ console.log('Fetched users:', users); // Log fetched users
 /*
 By using as Employee[], you're explicitly telling TypeScript that users should be treated as an array of Employee objects. This should resolve the error you're encountering. Make sure that the structure of the Employee interface matches the structure of the data returned by this._userService.getUsers().
  */
-this.employees = users as Employee[]; // Type assertion
+// this.employees = users as Employee[]; // Type assertion
 this.filteredEmployees = this.employees.slice(); // Initialize filteredEmployees
   }
 
