@@ -73,13 +73,28 @@
           >
             <i class="fa fa-eye text-info"></i>View
           </button> -->
+
+          <!-- Passing qeury paramters as well as query strings -->
           <button
             class="btn"
             title="view"
             [routerLink]="['/product-details', product.id]"
+            [queryParams]="{ page: 2 }"
           >
             <i class="fa fa-eye text-info"></i>View
           </button>
+
+          <!-- Passing multiple query strings -->
+
+          <button
+            class="btn"
+            title="view1"
+            [routerLink]="['/product-details', product.id]"
+            [queryParams]="{ color: 'blue', sort: 'name' }"
+          >
+            <i class="fa fa-eye text-info"></i>View1
+          </button>
+
           <button
             class="btn"
             title="delete"

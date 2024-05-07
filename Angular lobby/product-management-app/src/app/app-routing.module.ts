@@ -8,6 +8,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { authGuardGuard } from './auth-guard.guard';
 
 /* Define your application routes here! */
 const routes: Routes = [
@@ -25,7 +26,7 @@ const routes: Routes = [
     //   },
     // ]
   },
-  {path:'product-add',component: AddProductComponent},
+  {path:'product-add',component: AddProductComponent, canActivate:[authGuardGuard]},
   {path:'product-edit/:id',component: ProductEditComponent},
 
   /* If you wan't to display this in the main component, then just do like this as we have been doing the rest

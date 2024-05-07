@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsDataService } from '../products-data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +22,8 @@ Initialization Logic: You can place initialization logic, such as fetching initi
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductsDataService, private router:Router) { }
+
+  constructor(private productService: ProductsDataService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProducts();

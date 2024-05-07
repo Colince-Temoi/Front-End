@@ -1,0 +1,259 @@
+<section class="">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-9">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">
+                  Sign up
+                </p>
+
+                <form
+                  class="mx-1 mx-md-4"
+                  #regForm="ngForm"
+                  (ngSubmit)="onSubmit(regForm)"
+                >
+                  <!-- <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <input
+                        type="text"
+                        id="form3Example1c"
+                        name="name"
+                        class="form-control"
+                        style="width: 120%"
+                        ngModel
+                        required
+                      />
+                      <label class="form-label" for="form3Example1c"
+                        >Your Name</label
+                      >
+                    </div>
+                  </div> -->
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <input
+                        type="email"
+                        name="email"
+                        id="form3Example3c"
+                        class="form-control"
+                        style="width: 120%"
+                        ngModel
+                        required
+                      />
+                      <label class="form-label" for="form3Example3c"
+                        >Your Email</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <input
+                        type="password"
+                        name="pwd"
+                        id="form3Example4c"
+                        class="form-control"
+                        style="width: 120%"
+                        ngModel
+                      />
+                      <label class="form-label" for="form3Example4c"
+                        >Password</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <input
+                        type="password"
+                        id="form3Example4cd"
+                        name="repeatpwd"
+                        class="form-control"
+                        style="width: 120%"
+                        ngModel
+                      />
+                      <label class="form-label" for="form3Example4cd"
+                        >Repeat your password</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex justify-content-center mb-2">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="form2Example3c"
+                      name="tandc"
+                      ngModel
+                    />
+                    <label class="form-check-label" for="form2Example3">
+                      I agree all statements in
+                      <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-2 mb-lg-2">
+                    <button
+                      type="submit"
+                      value="submit"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-primary btn-lg"
+                    >
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="col-md-7 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+              >
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid"
+                  alt="Sample image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr />
+{{ regForm.value | json }}
+
+<!-- Making the dispayed data prettire -->
+<pre>
+  {{ regForm.value | json }}
+</pre>
+
+<pre>Valid : {{ regForm.valid }} </pre>
+<pre>Touched : {{ regForm.touched }} </pre>
+<pre>Submitted : {{ regForm.submitted }} </pre>
+<pre>Untouched : {{ regForm.untouched }} </pre>
+<pre>Pristine : {{ regForm.pristine }} </pre>
+<pre>Dirty : {{ regForm.dirty }} </pre>
+
+<!-- Registration Form -->
+<div class="container mt-4 mb-5">
+  <div class="card">
+    <div class="card-header h3 bg-primary text-white">Registration form</div>
+    <div class="container mt-2">
+      <form
+        action=""
+        enctype="multipart/form-data"
+        #userInfForm="ngForm"
+        (ngSubmit)="onSubmit1(userInfForm)"
+      >
+        <div class="row">
+          <div class="col-lg-4 form-group">
+            <label for="fnameid" class="text-primary">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="fname"
+              id="fnameid"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="lnameid" class="text-primary">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="lname"
+              id="lnameid"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="emailid" class="text-primary">Email</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="emailid"
+              ngModel
+            />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-2 mb-2">
+          <div class="col-md-12">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 m">Address Information</div>
+              <hr class="flex-grow-1 mx-2" style="width: 80%" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ngModelGroup="address">
+          <div class="col-lg-4 form-group">
+            <label for="cityId" class="text-primary">City</label>
+            <input
+              class="form-control"
+              type="text"
+              name="city"
+              id="cityId"
+              ngModel
+            />
+          </div>
+          <div class="col-lg-4 form-group">
+            <label for="streetId" class="text-primary">Street</label>
+            <input
+              class="form-control"
+              type="text"
+              name="street"
+              id="streetId"
+              ngModel
+            />
+          </div>
+          <div class="col-lg-4 form-group">
+            <label for="pincodeId" class="text-primary">PinCode</label>
+            <input
+              class="form-control"
+              type="text"
+              name="pincode"
+              id="pincodeId"
+              ngModel
+            />
+          </div>
+        </div>
+
+        <div class="text-center my-2">
+          <button class="btn btn-success" type="submit" value="submit">
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<pre>
+  {{ userInfForm.value | json }}
+</pre>

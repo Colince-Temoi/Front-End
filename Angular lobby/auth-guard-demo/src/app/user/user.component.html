@@ -1,0 +1,207 @@
+<!-- Registration Form -->
+<div class="container mt-4 mb-5">
+  <div class="card">
+    <div class="card-header h3 bg-primary text-white">Registration form</div>
+    <div class="container mt-2">
+      <form
+        action=""
+        enctype="multipart/form-data"
+        #userInfForm="ngForm"
+        (ngSubmit)="onSubmit(userInfForm)"
+      >
+        <div class="row justify-content-center mt-2 mb-2">
+          <div class="col-md-12">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 m">Name Information</div>
+              <hr class="flex-grow-1 mx-2" style="width: 80%" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ngModelGroup="name">
+          <div class="col-lg-4 form-group">
+            <label for="firstnameId" class="text-primary">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="firstname"
+              id="firstnameId"
+              ngModel
+            />
+          </div>
+          <div class="col-lg-4 form-group">
+            <label for="lastnameId" class="text-primary">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="lastname"
+              id="lastnameId"
+              ngModel
+            />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-2 mb-2">
+          <div class="col-md-12">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 m">User details Information</div>
+              <hr class="flex-grow-1 mx-2" style="width: 80%" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 form-group">
+            <label for="idId" class="text-primary">Id</label>
+            <input
+              class="form-control"
+              type="text"
+              name="id"
+              id="idId"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="unameid" class="text-primary">User Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="uname"
+              id="unameid"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="emailid" class="text-primary">Email</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="emailid"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="passwordId" class="text-primary">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id="passwordId"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="phoneId" class="text-primary">Phone</label>
+            <input
+              class="form-control"
+              type="text"
+              name="phone"
+              id="phoneId"
+              ngModel
+            />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-2 mb-2">
+          <div class="col-md-12">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1 m">Address Information</div>
+              <hr class="flex-grow-1 mx-2" style="width: 80%" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ngModelGroup="address">
+          <div class="col-lg-4 form-group">
+            <label for="cityId" class="text-primary">City</label>
+            <input
+              class="form-control"
+              type="text"
+              name="city"
+              id="cityId"
+              ngModel
+            />
+          </div>
+          <div class="col-lg-4 form-group">
+            <label for="streetId" class="text-primary">Street</label>
+            <input
+              class="form-control"
+              type="text"
+              name="street"
+              id="streetId"
+              ngModel
+            />
+          </div>
+          <div class="col-lg-4 form-group">
+            <label for="numberId" class="text-primary">Number</label>
+            <input
+              class="form-control"
+              type="number"
+              name="number"
+              id="numberId"
+              ngModel
+            />
+          </div>
+
+          <div class="col-lg-4 form-group">
+            <label for="zipcodeId" class="text-primary">Zip Code</label>
+            <input
+              class="form-control"
+              type="text"
+              name="zipcode"
+              id="zipcodeId"
+              ngModel
+            />
+          </div>
+
+          <div class="row justify-content-center mt-2 mb-2">
+            <div class="col-md-12">
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1 m">Geo Location Information</div>
+                <hr class="flex-grow-1 mx-2" style="width: 80%" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row" ngModelGroup="geolocation">
+            <div class="col-lg-4 form-group">
+              <label for="latId" class="text-primary">Latitude</label>
+              <input
+                class="form-control"
+                type="text"
+                name="lat"
+                id="latId"
+                ngModel
+              />
+            </div>
+            <div class="col-lg-4 form-group">
+              <label for="longId" class="text-primary">Longitude</label>
+              <input
+                class="form-control"
+                type="text"
+                name="long"
+                id="longId"
+                ngModel
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center my-2">
+          <button class="btn btn-success" type="submit" value="submit">
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<pre>
+  {{ userInfForm.value | json }}
+</pre>
