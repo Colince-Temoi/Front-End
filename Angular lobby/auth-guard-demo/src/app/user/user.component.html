@@ -26,7 +26,7 @@
               type="text"
               name="firstname"
               id="firstnameId"
-              ngModel
+              [(ngModel)]="user.name.firstname"
             />
           </div>
           <div class="col-lg-4 form-group">
@@ -36,7 +36,7 @@
               type="text"
               name="lastname"
               id="lastnameId"
-              ngModel
+              [(ngModel)]="user.name.lastname"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@
               type="text"
               name="id"
               id="idId"
-              ngModel
+              [(ngModel)]="user.id"
             />
           </div>
 
@@ -69,7 +69,7 @@
               type="text"
               name="uname"
               id="unameid"
-              ngModel
+              [(ngModel)]="user.username"
             />
           </div>
 
@@ -80,7 +80,7 @@
               type="email"
               name="email"
               id="emailid"
-              ngModel
+              [(ngModel)]="user.email"
             />
           </div>
 
@@ -91,7 +91,7 @@
               type="password"
               name="password"
               id="passwordId"
-              ngModel
+              [(ngModel)]="user.password"
             />
           </div>
 
@@ -102,7 +102,7 @@
               type="text"
               name="phone"
               id="phoneId"
-              ngModel
+              [(ngModel)]="user.phone"
             />
           </div>
         </div>
@@ -124,7 +124,7 @@
               type="text"
               name="city"
               id="cityId"
-              ngModel
+              [(ngModel)]="user.address.city"
             />
           </div>
           <div class="col-lg-4 form-group">
@@ -134,7 +134,7 @@
               type="text"
               name="street"
               id="streetId"
-              ngModel
+              [(ngModel)]="user.address.street"
             />
           </div>
           <div class="col-lg-4 form-group">
@@ -144,7 +144,7 @@
               type="number"
               name="number"
               id="numberId"
-              ngModel
+              [(ngModel)]="user.address.number"
             />
           </div>
 
@@ -155,7 +155,7 @@
               type="text"
               name="zipcode"
               id="zipcodeId"
-              ngModel
+              [(ngModel)]="user.address.zipcode"
             />
           </div>
 
@@ -176,7 +176,7 @@
                 type="text"
                 name="lat"
                 id="latId"
-                ngModel
+                [(ngModel)]="user.address.geolocation.lat"
               />
             </div>
             <div class="col-lg-4 form-group">
@@ -186,7 +186,7 @@
                 type="text"
                 name="long"
                 id="longId"
-                ngModel
+                [(ngModel)]="user.address.geolocation.long"
               />
             </div>
           </div>

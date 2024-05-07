@@ -21,7 +21,7 @@ export class UserComponent {
       address:{
           city:'',
           street:'',
-          number:3,
+          number:'',
           zipcode:'',
           geolocation:{
               lat:'',
@@ -39,14 +39,15 @@ export class UserComponent {
     1. See below few fields example
 
     Alternative 2 is you can make use of 2-way data binding - Use this approach!
+    Check how we have done in the template
 
     The purpose of this is to make the form ready for other subsequent submitions after a submission is done.
     */  
-   _userInf.value.email=this.user.email;
-   _userInf.value.address.city=this.user.address.city;
-   _userInf.value.
-   uname= this.user.username
-   _userInf.value.password=this.user.password
+  //  _userInf.value.email=this.user.email;
+  //  _userInf.value.address.city=this.user.address.city;
+  //  _userInf.value.
+  //  uname= this.user.username
+  //  _userInf.value.password=this.user.password
     
     }
 
