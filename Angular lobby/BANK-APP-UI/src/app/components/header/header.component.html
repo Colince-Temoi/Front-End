@@ -1,0 +1,45 @@
+<div data-navigation="container" class="i-top-header">
+  <div class="wrapper top-section">
+    <div class="hleft">
+      <a
+        class="logo selfLogo"
+        [routerLink]="user.authStatus != 'AUTH' ? ['/home'] : ['/dashboard']"
+        ><img alt="logo" src="../assets/images/logo.png"
+      /></a>
+    </div>
+    <div class="mnav_hb hide">
+      <div class="hamburger">
+        <span class="line"></span><span class="line"></span
+        ><span class="line"></span>
+      </div>
+    </div>
+    <nav class="hright dnav">
+      <!-- user.authStatus!='AUTH'" means - If user is logged in authStatus value will be AUTH otherwise !AUTH  -->
+      <ul>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/home">Home</a>
+        </li>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/contact">Contact US</a>
+        </li>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/notices">Notices</a>
+        </li>
+        <!-- Here using ng if, I am  telling whenever the authStatus is AUTH please display Dashboard and Logout only!
+        Otherwise,  display the above public links like: home, login, contact and notices
+        This is how I am controlling the things
+        -->
+        <li *ngIf="user.authStatus == 'AUTH'" routerLinkActive="active">
+          <a routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li *ngIf="user.authStatus == 'AUTH'" routerLinkActive="active">
+          <a routerLink="/logout">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>
