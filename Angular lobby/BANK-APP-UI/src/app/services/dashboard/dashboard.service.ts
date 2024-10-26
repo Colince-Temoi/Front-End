@@ -17,7 +17,7 @@ export class DashboardService {
   /** withCredentials: true implies telling Angular
    * Please send any cookies or session id's or any tokens that you have to the backend server so that my spring security can understand whether the authentication is happened or not
    * For public apis we are not sending withCredentials: true because they don't need any authentication.
-   * Along that you can see we are mentioning observe: 'response' meaning we are telling to the backend server that please send the ntire response and not only the header or body
+   * Along that you can see we are mentioning observe: 'response' meaning we are telling to the backend server that please send the entire response and not only the header or body
    */
   getAccountDetails(id: number){
     return this.http.get(environment.rooturl + AppConstants.ACCOUNT_API_URL + "?id="+id,{ observe: 'response',withCredentials: true });

@@ -25,6 +25,23 @@ export class XhrInterceptor implements HttpInterceptor {
     if(this.user && this.user.password && this.user.email){
       httpHeaders = httpHeaders.append('Authorization', 'Basic ' + window.btoa(this.user.email + ':' + this.user.password));
     }
+    /**
+     * Will execute for subsequent requests. So, if the user is already authenticated, I am sending the Authorization header. 
+     */
+    else {
+      // Reading the JWT token value from the session storage
+      let authorization = sessionStorage.getItem('Authorization');
+      // If it is not null, I am appending it to the Authorization header
+      if(authorization){
+        httpHeaders = httpHeaders.append('Authorization', authorization); 
+      }
+    }
+
+    let xsrf = sessionStorage.getItem('XSRF-TOKEN');
+    if(xsrf){
+      httpHeaders = httpHeaders.append('X-XSRF-TOKEN', xsrf);  
+    }
+
     /** Otherwise in all other scenarios where the user is null email is empty and pwd is empty, I am not giong to re-authenticate the user because the authentication already happened and from second time onwards I don't have to send this Authorization header but you may have a question like: how my Spring boot knows whether my end-user is authenticated or not??
      * For that if you go to the Dashboard.service.ts file where we are invoking majority of the REST services you will see that whenever I am making a REST api call to the backend, for all the secured API's I just telling withCredentials: true
      */

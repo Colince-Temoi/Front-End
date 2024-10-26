@@ -16,6 +16,7 @@ export class LoginService {
 
   /** validateLoginDetails behavior
    *  Here we are making a get request to the server.
+   *  To the end-point, /user
    */
   validateLoginDetails(user: User) {
     window.sessionStorage.setItem("userdetails",JSON.stringify(user));

@@ -3,6 +3,7 @@ import { User } from "src/app/model/user.model";
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Router } from '@angular/router';
+import { getCookie } from 'typescript-cookie';
 
 
 @Component({
@@ -32,11 +33,14 @@ export class LoginComponent implements OnInit {
   validateUser(loginForm: NgForm) {
     this.loginService.validateLoginDetails(this.model).subscribe(
       responseData => {
+        window.sessionStorage.setItem("Authorization",responseData.headers.get('Authorization')!);
         //  Taking the body from the received response
         this.model = <any> responseData.body;
         //  Accordingly I am executing the below business logic
         this.model.authStatus = 'AUTH';
         window.sessionStorage.setItem("userdetails",JSON.stringify(this.model));
+        let xsrf = getCookie('XSRF-TOKEN')!;
+        window.sessionStorage.setItem("XSRF-TOKEN",xsrf);
         //  At last once the login is successful, I am redirecting the user to a route which is 'dashboard'
         this.router.navigate(['dashboard']);
       });
