@@ -1,0 +1,44 @@
+<!-- Changes inside this file as of 1/10/2025
+ * Previously when the end-user clicked on the login and logout buttons, the paths /login and /logout were getting invoked respectively. But right now I am invoking the functions login() and logout() respectively which are available inside the header component file.
+ * Open them to see what I have done + whatever changes I have made inside this header component file.
+  -->
+<div data-navigation="container" class="i-top-header">
+  <div class="wrapper top-section">
+    <div class="hleft">
+      <a
+        class="logo selfLogo"
+        [routerLink]="user.authStatus != 'AUTH' ? ['/home'] : ['/dashboard']"
+        ><img alt="logo" src="../assets/images/logo.png"
+      /></a>
+    </div>
+    <div class="mnav_hb hide">
+      <div class="hamburger">
+        <span class="line"></span><span class="line"></span
+        ><span class="line"></span>
+      </div>
+    </div>
+    <nav class="hright dnav">
+      <ul>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/home">Home</a>
+        </li>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a (click)="login()">Login</a>
+        </li>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/contact">Contact US</a>
+        </li>
+        <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+          <a routerLink="/notices">Notices</a>
+        </li>
+        <li *ngIf="user.authStatus == 'AUTH'" routerLinkActive="active">
+          <a routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li *ngIf="user.authStatus == 'AUTH'" routerLinkActive="active">
+          <a (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>
